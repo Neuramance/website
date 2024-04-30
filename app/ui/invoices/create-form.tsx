@@ -1,7 +1,7 @@
 'use client';
 import { createInvoice } from '@/app/lib/action';
 import { CustomerField } from '@/app/lib/definitions';
-import { ButtonOld } from '@/app/ui/button';
+import { Button } from '@/app/ui/button';
 import {
   CheckIcon,
   ClockIcon,
@@ -140,7 +140,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
         >
           Cancel
         </Link>
-        <ButtonOld type="submit">Create Invoice</ButtonOld>
+        <Button type="submit">Create Invoice</Button>
       </div>
     </form>
   );
