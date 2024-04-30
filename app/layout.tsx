@@ -1,15 +1,23 @@
-import { inter } from '@/app/ui/fonts';
 import '@/app/ui/global.css';
 import { Metadata } from 'next';
+import localFont from 'next/font/local';
+
+import { cn } from './lib/utils';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Acme Dashboard',
-    default: 'Acme Dashboard',
+    template: '%s | Neuramance',
+    default: 'Neuramance',
   },
-  description: 'The official Next.js Learn Dashboard built with App Router.',
-  metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
+  description: 'The Ultimate AI App.',
+  metadataBase: new URL('https://neuramance.com'),
 };
+
+const fontSans = localFont({
+  src: './fonts/InterVariable.woff2',
+  display: 'swap',
+  variable: '--font-sans',
+});
 
 export default function RootLayout({
   children,
@@ -18,7 +26,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body
+        className={cn(
+          'min-h-screen bg-background font-sans antialiased',
+          fontSans.variable,
+        )}
+      >
+        {children}
+      </body>
     </html>
   );
 }

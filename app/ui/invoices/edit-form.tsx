@@ -2,7 +2,7 @@
 
 import { updateInvoice } from '@/app/lib/action';
 import { CustomerField, InvoiceForm } from '@/app/lib/definitions';
-import { Button } from '@/app/ui/button';
+import { ButtonOld } from '@/app/ui/button';
 import {
   CheckIcon,
   ClockIcon,
@@ -121,7 +121,7 @@ export default function EditInvoiceForm({
         >
           Cancel
         </Link>
-        <Button type="submit">Edit Invoice</Button>
+        <ButtonOld type="submit">Edit Invoice</ButtonOld>
       </div>
     </form>
   );
