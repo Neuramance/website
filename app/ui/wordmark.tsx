@@ -7,7 +7,7 @@ const Wordmark = forwardRef<HTMLDivElement, WordmarkProps>((props, ref) => {
   return (
     <div ref={ref} className="text-white">
       <svg
-        height="15"
+        height="14"
         viewBox="0 0 370 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
