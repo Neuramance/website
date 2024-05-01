@@ -9,8 +9,8 @@ export const metadata: Metadata = {
     template: '%s | Neuramance',
     default: 'Neuramance',
   },
-  description: 'The Ultimate AI App.',
-  metadataBase: new URL('https://neuramance.com'),
+  description: 'The Ultimate App For AI.',
+  metadataBase: new URL('https://Neuramance.com'),
 };
 
 const fontSans = localFont({

@@ -38,7 +38,7 @@ const config = {
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
+          foreground: 'var(--primary-foreground)',
         },
         secondary: {
           DEFAULT: 'var(--secondary)',
@@ -49,7 +49,7 @@ const config = {
           foreground: 'hsl(var(--destructive-foreground))',
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted))',
+          DEFAULT: 'var(--muted)',
           foreground: 'var(--muted-foreground)',
         },
         accent: {
