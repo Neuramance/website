@@ -27,7 +27,7 @@ export default function HomepageNav() {
     },
   });
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 flex w-full justify-center border-b-[0.5px] bg-background px-8 pb-2 pt-2">
+    <header className="fixed left-0 right-0 top-0 z-50 flex w-full justify-center border-b bg-background px-8 py-2">
       <div className="flex w-full max-w-[1400px] items-center justify-between">
         <Link href="/">
           <Wordmark ref={glitch.ref} />
@@ -46,7 +46,7 @@ export default function HomepageNav() {
                   <li className="row-span-3">
                     <NavigationMenuLink asChild>
                       <a
-                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-secondary p-6 no-underline outline-none focus:shadow-md"
+                        className="flex h-full w-full select-none flex-col justify-end rounded-md border bg-secondary p-6 no-underline outline-none hover:bg-background focus:shadow-md"
                         href="/"
                       >
                         <Icons.logo className="h-6 w-6" />
@@ -92,9 +92,9 @@ export default function HomepageNav() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        <div className="flex gap-1">
+        <div className="flex gap-2">
           <Link href="/login">
-            <Button size="nav" variant="blank">
+            <Button size="nav" variant="secondary">
               Log in
             </Button>
           </Link>

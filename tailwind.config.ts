@@ -32,7 +32,6 @@ const config = {
         mono: ['var(--font-geist-mono)', ...fontFamily.mono],
       },
       colors: {
-        border: 'var(--border)',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         background: 'var(--background)',
@@ -40,6 +39,11 @@ const config = {
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'var(--primary-foreground)',
+          border: 'var(--primary-border)',
+        },
+        border: {
+          DEFAULT: 'var(--border)',
+          button: 'var(--border-btn)',
         },
         secondary: {
           DEFAULT: 'var(--secondary)',

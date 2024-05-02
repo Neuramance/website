@@ -17,7 +17,7 @@ export default function LoginPage() {
           Create your Neuramance account
         </h1>
         <div className="flex flex-col space-y-4">
-          <button className="flex items-center justify-center rounded-lg  bg-blue-500 px-5 py-3.5 text-center text-base font-medium text-white hover:bg-blue-600">
+          <button className="border-primary-border flex items-center justify-center rounded-lg border bg-blue-500 px-5 py-3.5 text-center text-base font-medium text-white hover:bg-blue-600">
             <svg
               className="pr-3"
               height="14"
@@ -34,7 +34,7 @@ export default function LoginPage() {
             </svg>{' '}
             Continue with Google
           </button>
-          <button className="rounded-lg bg-neutral-900 px-5 py-3.5 text-center text-base font-medium text-white hover:bg-neutral-800">
+          <button className="rounded-lg border border-border bg-neutral-900 px-5 py-3.5 text-center text-base font-medium text-white hover:bg-neutral-800">
             Continue with Email
           </button>
         </div>
