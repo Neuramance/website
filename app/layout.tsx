@@ -1,4 +1,5 @@
 import '@/app/ui/global.css';
+import { GeistMono } from 'geist/font/mono';
 import { Metadata } from 'next';
 import localFont from 'next/font/local';
 
@@ -30,6 +31,7 @@ export default function RootLayout({
         className={cn(
           'min-h-screen bg-background font-sans antialiased',
           fontSans.variable,
+          GeistMono.variable,
         )}
       >
         {children}
