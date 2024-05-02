@@ -18,8 +18,7 @@ export default function Page() {
         <CardHeader>
           <CardTitle>Contact us.</CardTitle>
           <CardDescription>
-            Reach out to our team about product questions or business
-            opportunities.
+            Reach out about product questions or business opportunities.
           </CardDescription>
         </CardHeader>
         <CardContent>

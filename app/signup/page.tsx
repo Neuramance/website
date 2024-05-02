@@ -14,10 +14,10 @@ export default function LoginPage() {
 
       <div className="w-full max-w-sm space-y-6 rounded-lg p-8">
         <h1 className="mb-10 text-center text-3xl font-semibold">
-          Log in to Neuramance
+          Create your Neuramance account
         </h1>
         <div className="flex flex-col space-y-4">
-          <button className="flex  items-center justify-center rounded-lg  bg-blue-500 px-5 py-3.5 text-center text-base font-medium text-white hover:bg-blue-600">
+          <button className="flex items-center justify-center rounded-lg  bg-blue-500 px-5 py-3.5 text-center text-base font-medium text-white hover:bg-blue-600">
             <svg
               className="pr-3"
               height="14"

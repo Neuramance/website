@@ -23,7 +23,7 @@ import Wordmark from '../wordmark';
 export default function HomepageNav() {
   const glitch = useGlitch({
     timing: {
-      duration: 8000,
+      duration: 10000,
     },
   });
   return (
@@ -46,7 +46,7 @@ export default function HomepageNav() {
                   <li className="row-span-3">
                     <NavigationMenuLink asChild>
                       <a
-                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-muted p-6 no-underline outline-none focus:shadow-md"
+                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-secondary p-6 no-underline outline-none focus:shadow-md"
                         href="/"
                       >
                         <Icons.logo className="h-6 w-6" />
@@ -93,10 +93,14 @@ export default function HomepageNav() {
         </NavigationMenu>
 
         <div className="flex gap-1">
-          <Button size="nav" variant="blank">
-            Log in
-          </Button>
-          <Button size="nav">Sign up</Button>
+          <Link href="/login">
+            <Button size="nav" variant="blank">
+              Log in
+            </Button>
+          </Link>
+          <Link href="/signup">
+            <Button size="nav">Sign up</Button>
+          </Link>
         </div>
       </div>
     </header>
