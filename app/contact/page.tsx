@@ -12,7 +12,7 @@ export default function Page() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
       <HomepageHeader />
-      <div className="pointer-events-none absolute inset-0 overflow-hidden bg-[url('/stars-bg.png')] bg-[length:1090px] bg-center"></div>
+      <div className="pointer-events-none absolute inset-0 overflow-hidden bg-background"></div>
 
       <Card className="z-0 w-[400px] border-[0.5px]">
         <CardHeader>

@@ -10,7 +10,7 @@ export function Hero() {
         <div className="flex flex-col justify-center space-y-8 text-center">
           <div className="space-y-2">
             <h1 className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-3xl font-bold tracking-tight text-transparent ss-disambiguation sm:text-5xl xl:text-6xl/none">
-              The Ultimate App For AI.
+              Your Command Center For Everyday AI.
             </h1>
             <p className="text-zinc-200\ mx-auto max-w-[600px] ss-i-with-serif dark:text-zinc-100 md:text-xl">
               Neuramance is the modern command center for everyday AI. Deploy

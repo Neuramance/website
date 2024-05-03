@@ -12,10 +12,13 @@ export const metadata: Metadata = {
   },
   description: 'The Ultimate App For AI.',
   metadataBase: new URL('https://Neuramance.com'),
+  openGraph: {
+    images: '/opengraph-image.png',
+  },
 };
 
 const fontSans = localFont({
-  src: './fonts/InterVariable.woff2',
+  src: './ui/fonts/InterVariable.woff2',
   display: 'swap',
   variable: '--font-sans',
 });

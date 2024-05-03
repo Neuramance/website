@@ -1,6 +1,6 @@
 'use client';
 
-import { Icons } from '@/app/icons/icons';
+import { Icons } from '@/app/ui/icons/icons';
 
 import { cn } from '@/app/lib/utils';
 import { Badge } from '@/app/ui/badge';
@@ -27,7 +27,7 @@ export default function HomepageNav() {
     },
   });
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 flex w-full justify-center border-b bg-background px-8 py-2">
+    <header className="fixed left-0 right-0 top-0 z-50 flex w-full justify-center border-b bg-background bg-secondary px-8 py-2">
       <div className="flex w-full max-w-[1400px] items-center justify-between">
         <Link href="/">
           <Wordmark ref={glitch.ref} />
@@ -99,7 +99,9 @@ export default function HomepageNav() {
             </Button>
           </Link>
           <Link href="/signup">
-            <Button size="nav">Sign up</Button>
+            <Button size="nav" variant="white">
+              Sign up
+            </Button>
           </Link>
         </div>
       </div>

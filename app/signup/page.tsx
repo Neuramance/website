@@ -1,7 +1,8 @@
+import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
-import { Icons } from '../icons/icons';
+import { Icons } from '../ui/icons/icons';
 
-export default function LoginPage() {
+export default function Page() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-background">
       <header className="fixed left-0 right-0 top-0 z-50 flex w-full justify-center px-6 pb-2 pt-6">
@@ -16,8 +17,8 @@ export default function LoginPage() {
         <h1 className="mb-10 text-center text-3xl font-semibold">
           Create your Neuramance account
         </h1>
-        <div className="flex flex-col space-y-4">
-          <button className="border-primary-border flex items-center justify-center rounded-lg border bg-blue-500 px-5 py-3.5 text-center text-base font-medium text-white hover:bg-blue-600">
+        <div className="flex flex-col space-y-3">
+          <button className="flex h-12 items-center justify-center rounded-lg bg-blue-500 px-5 py-3.5 text-center text-base font-medium text-white hover:bg-blue-600">
             <svg
               className="pr-3"
               height="14"
@@ -34,9 +35,12 @@ export default function LoginPage() {
             </svg>{' '}
             Continue with Google
           </button>
-          <button className="rounded-lg border border-border bg-neutral-900 px-5 py-3.5 text-center text-base font-medium text-white hover:bg-neutral-800">
-            Continue with Email
-          </button>
+          <Link href="/signup/email">
+            <button className="flex h-12 w-full items-center justify-center gap-3 rounded-lg border border-border bg-secondary px-5 py-3.5 text-center text-base font-medium text-white hover:bg-neutral-800">
+              <EnvelopeClosedIcon />
+              Continue with Email
+            </button>
+          </Link>
         </div>
       </div>
     </main>
