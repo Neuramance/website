@@ -1,5 +1,5 @@
-import { Hero } from '@/app/ui/home/hero';
-import HomepageNav from '@/app/ui/home/nav';
+import { Hero } from '@/components/hero';
+import HomepageNav from '@/components/nav';
 
 export default function Page() {
   return (

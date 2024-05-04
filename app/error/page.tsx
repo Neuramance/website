@@ -1,4 +1,4 @@
-import HomepageNav from '@/app/ui/home/nav';
+import HomepageNav from '@/components/nav';
 
 export default function ErrorPage() {
   return (

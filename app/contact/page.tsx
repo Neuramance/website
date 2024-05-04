@@ -1,11 +1,11 @@
+import HomepageHeader from '@/components/nav';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/app/ui/card';
-import HomepageHeader from '@/app/ui/home/nav';
+} from '@/components/ui/card';
 import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 
 export default function Page() {

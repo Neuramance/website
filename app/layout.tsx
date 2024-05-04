@@ -1,24 +1,25 @@
-import '@/app/ui/global.css';
+import '@/styles/global.css';
 import { GeistMono } from 'geist/font/mono';
 import { Metadata } from 'next';
 import localFont from 'next/font/local';
 
-import { cn } from './lib/utils';
+// import UserStatus from '@/components/ui/user-status';
+import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: {
     template: '%s | Neuramance',
     default: 'Neuramance',
   },
-  description: 'The Ultimate App For AI.',
+  description: 'Your Command Center For Everyday AI.',
   metadataBase: new URL('https://Neuramance.com'),
   openGraph: {
-    images: '/opengraph-image.png',
+    images: '/opengraph-image.jpg',
   },
 };
 
 const fontSans = localFont({
-  src: './ui/fonts/InterVariable.woff2',
+  src: '../lib/fonts/InterVariable.woff2',
   display: 'swap',
   variable: '--font-sans',
 });
@@ -38,6 +39,7 @@ export default function RootLayout({
         )}
       >
         {children}
+        {/* <UserStatus /> */}
       </body>
     </html>
   );
