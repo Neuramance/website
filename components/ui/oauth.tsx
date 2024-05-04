@@ -1,11 +1,34 @@
 'use client';
 
-import { loginWithGoogle } from '@/lib/auth/actions';
+import { useRouter } from 'next/navigation';
 
-export default function GoogleAuthButton() {
+import { createClient } from '@/lib/supabase/client';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+
+const isProd = process.env.VERCEL_ENV === 'production';
+
+async function loginWithGoogle(router: AppRouterInstance | string[]) {
+  const supabase = createClient();
+
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: isProd ? 'https://neuramance.com' : 'http://localhost:3000',
+    },
+  });
+
+  if (error) {
+    console.log(error);
+    router.push('/error');
+  }
+}
+
+export default function GoogleOAuthButton() {
+  const router = useRouter();
+
   return (
     <button
-      onClick={() => loginWithGoogle()}
+      onClick={async () => await loginWithGoogle(router)}
       className="flex h-12 items-center justify-center rounded-lg bg-blue-500 px-5 py-3.5 text-center text-base font-medium text-white hover:bg-blue-600"
     >
       <svg

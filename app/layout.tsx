@@ -3,7 +3,7 @@ import { GeistMono } from 'geist/font/mono';
 import { Metadata } from 'next';
 import localFont from 'next/font/local';
 
-// import UserStatus from '@/components/ui/user-status';
+import UserStatus from '@/components/ui/user-status';
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
@@ -39,7 +39,7 @@ export default function RootLayout({
         )}
       >
         {children}
-        {/* <UserStatus /> */}
+        <UserStatus />
       </body>
     </html>
   );
