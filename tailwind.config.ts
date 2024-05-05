@@ -43,7 +43,7 @@ const config = {
         },
         border: {
           DEFAULT: 'var(--border)',
-          button: 'var(--border-btn)',
+          button: 'var(--border-button)',
         },
         secondary: {
           DEFAULT: 'var(--secondary)',

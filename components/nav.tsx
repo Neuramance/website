@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import AccountBlock from './account-block';
 import HomeNavMenu from './home-nav-menu';
 import GlitchWordmark from './ui/glitch-wordmark';
 
@@ -13,18 +13,7 @@ export default function HomepageNav() {
 
         <HomeNavMenu />
 
-        <div className="flex gap-2">
-          <Link href="/login">
-            <Button size="nav" variant="secondary">
-              Log in
-            </Button>
-          </Link>
-          <Link href="/signup">
-            <Button size="nav" variant="white">
-              Sign up
-            </Button>
-          </Link>
-        </div>
+        <AccountBlock />
       </div>
     </header>
   );
