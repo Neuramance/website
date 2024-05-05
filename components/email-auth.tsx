@@ -5,11 +5,11 @@ import { loginWithMagicLink } from '@/lib/auth/actions';
 import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 import { FormEvent, useState } from 'react';
 
-interface EmailAuthProps {
+interface EmailAuthFormProps {
   title: string;
 }
 
-export default function EmailAuth({ title }: EmailAuthProps) {
+export default function EmailAuthForm({ title }: EmailAuthFormProps) {
   const [emailSent, setEmailSent] = useState(false); // State to track if email is sent
   const [submittedEmail, setSubmittedEmail] = useState(''); // State to store the submitted email address
 

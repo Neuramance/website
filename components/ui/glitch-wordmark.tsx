@@ -1,11 +1,15 @@
-import { forwardRef } from 'react';
+'use client';
 
-// Assuming no additional props, otherwise define and include them here
-interface WordmarkProps {}
+import { useGlitch } from 'react-powerglitch';
 
-const Wordmark = forwardRef<HTMLDivElement, WordmarkProps>((props, ref) => {
+export default function GlitchWordmark() {
+  const glitch = useGlitch({
+    timing: {
+      duration: 5000,
+    },
+  });
   return (
-    <div ref={ref} className="text-white">
+    <div ref={glitch.ref} className="text-white">
       <svg
         height="16"
         viewBox="0 0 454 62"
@@ -311,8 +315,4 @@ const Wordmark = forwardRef<HTMLDivElement, WordmarkProps>((props, ref) => {
       </svg>
     </div>
   );
-});
-
-Wordmark.displayName = 'Wordmark';
-
-export default Wordmark;
+}
