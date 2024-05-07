@@ -1,4 +1,3 @@
-import HomepageHeader from '@/components/nav';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 import { Terminal } from 'lucide-react';
@@ -6,8 +5,7 @@ import { Terminal } from 'lucide-react';
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
-      <HomepageHeader />
-      <div className="pointer-events-none absolute inset-0 overflow-hidden bg-background"></div>
+      <div className="pointer-events-none absolute inset-0 overflow-hidden bg-dot-pattern bg-[size:20px_20px] bg-[position:0_0,10px_10px]"></div>
 
       <Alert className="w-[600px] bg-secondary">
         <Terminal className="h-4 w-4" />

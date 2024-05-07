@@ -31,7 +31,7 @@ export default function HomeNavMenu() {
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[550px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
-                  <a
+                  <Link
                     className="flex h-full w-full select-none flex-col justify-end rounded-md border bg-secondary p-6 no-underline outline-none hover:bg-background focus:shadow-md"
                     href="/"
                   >
@@ -44,20 +44,26 @@ export default function HomeNavMenu() {
                       together. Analyze & visualize productivity, workflows, and
                       results.
                     </p>
-                  </a>
+                  </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/" title="Deploy Agents">
-                Task AI agents to self assemble in order to complete tasks you
-                choose.
-              </ListItem>
-              <ListItem href="/" title="Analyze Workflow">
-                Visualize agentic collaboration and review work output in
-                realtime.
-              </ListItem>
-              <ListItem href="/" title="Query Workforce">
-                Ask your AI agents questions about their work and yields.
-              </ListItem>
+              <Link href="/" legacyBehavior passHref>
+                <ListItem title="Deploy Agents">
+                  Task AI agents to self assemble in order to complete tasks you
+                  choose.
+                </ListItem>
+              </Link>
+              <Link href="/" legacyBehavior passHref>
+                <ListItem href="/" title="Analyze Workflow">
+                  Visualize agentic collaboration and review work output in
+                  realtime.
+                </ListItem>
+              </Link>
+              <Link href="/" legacyBehavior passHref>
+                <ListItem href="/" title="Query Workforce">
+                  Ask your AI agents questions about their work and yields.
+                </ListItem>
+              </Link>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>

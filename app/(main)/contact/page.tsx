@@ -1,4 +1,3 @@
-import HomepageHeader from '@/components/nav';
 import {
   Card,
   CardContent,
@@ -11,10 +10,9 @@ import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
-      <HomepageHeader />
-      <div className="pointer-events-none absolute inset-0 overflow-hidden bg-background"></div>
+      <div className="pointer-events-none absolute inset-0 overflow-hidden bg-dot-pattern bg-[size:20px_20px] bg-[position:0_0,10px_10px]"></div>
 
-      <Card className="z-0 w-[400px] border-[0.5px]">
+      <Card className="z-0 mb-1 w-[420px] border-[0.5px]">
         <CardHeader>
           <CardTitle>Contact us.</CardTitle>
           <CardDescription>

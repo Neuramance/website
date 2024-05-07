@@ -27,6 +27,10 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        'dot-pattern':
+          'radial-gradient(#343434 0.5px, transparent 0.5px), radial-gradient(#343434 0.5px, #0b0b0b 0.5px)',
+      },
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
         mono: ['var(--font-geist-mono)', ...fontFamily.mono],

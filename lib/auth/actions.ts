@@ -4,13 +4,31 @@ import { redirect } from 'next/navigation';
 
 import { createClient } from '@/lib/supabase/server';
 
-const isProd = process.env.VERCEL_ENV === 'production';
+export async function loginWithGoogle() {
+  const supabase = createClient();
+
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo:
+        process.env.VERCEL_ENV === 'production'
+          ? 'https://neuramance.com/auth/callback'
+          : 'http://localhost:3000/auth/callback',
+    },
+  });
+
+  if (error) {
+    console.log(error);
+    redirect('/error');
+  }
+
+  if (data.url) {
+    redirect(data.url); // redirect to Google OAuth endpoint URL
+  }
+}
 
 export async function loginWithMagicLink(formData: FormData) {
   const supabase = createClient();
-
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
 
   const userEmail = formData.get('email') as string;
 
@@ -18,9 +36,11 @@ export async function loginWithMagicLink(formData: FormData) {
     email: userEmail,
     options: {
       shouldCreateUser: true,
-      emailRedirectTo: isProd
-        ? 'https://neuramance.com'
-        : 'http://localhost:3000',
+      // supabase email template uses { .RedirectTo } for /auth/confirm & redirect
+      emailRedirectTo:
+        process.env.VERCEL_ENV === 'production'
+          ? 'https://neuramance.com'
+          : 'http://localhost:3000',
     },
   });
 
