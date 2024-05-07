@@ -1,10 +1,12 @@
-'use client';
-
 import { Button } from '@/components/ui/button';
-import useUser from '@/lib/auth/user';
+import { createClient } from '@/lib/supabase/server';
 
-export default function UserStatus() {
-  const user = useUser();
+export default async function UserStatus() {
+  const supabase = createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   return (
     <div className="absolute right-24 top-24 z-50 flex flex-col gap-1 rounded-md border border-border bg-black p-4 text-green-500 shadow-md">

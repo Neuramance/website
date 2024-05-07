@@ -6,7 +6,7 @@ import AuthNav from '@/components/auth-nav';
 
 export default function Page() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background">
+    <div className="flex min-h-screen items-center justify-center bg-background">
       <AuthNav />
 
       <div className="flex max-w-xs flex-col gap-3">
@@ -22,6 +22,6 @@ export default function Page() {
           </button>
         </Link>
       </div>
-    </main>
+    </div>
   );
 }

@@ -4,9 +4,9 @@ import Link from 'next/link';
 
 import { GoogleOAuthButton } from '@/components/auth';
 
-export default function Page() {
+export default async function Page() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background">
+    <div className="flex min-h-screen items-center justify-center bg-background">
       <AuthNav />
       <div className="flex w-full max-w-sm flex-col justify-start gap-3 p-8">
         <h1 className="mb-8 text-center text-3xl font-semibold">
@@ -21,6 +21,6 @@ export default function Page() {
           </button>
         </Link>
       </div>
-    </main>
+    </div>
   );
 }

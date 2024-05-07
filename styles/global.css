@@ -13,9 +13,8 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 217 91% 60%;
+    --primary: #121212;
     --primary-foreground: #ffffff;
-    --primary-border: #74a9ff;
 
     --secondary: #090909;
     --secondary-foreground: 210 40% 98%;
@@ -29,8 +28,8 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: #343434;
-    --border-button: #3e3e3e;
+    --border: #121212;
+    --border-button: #121212;
     --input: 0 0% 20%;
     --ring: 212.7 26.8% 83.9%;
 

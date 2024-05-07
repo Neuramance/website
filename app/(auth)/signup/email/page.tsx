@@ -1,11 +1,11 @@
 import { EmailAuthForm } from '@/components/auth';
 import AuthNav from '@/components/auth-nav';
 
-export default function Page() {
+export default async function Page() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background">
+    <div className="flex min-h-screen items-center justify-center bg-background">
       <AuthNav />
       <EmailAuthForm title="Create your Neuramance account" />
-    </main>
+    </div>
   );
 }

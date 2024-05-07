@@ -29,7 +29,7 @@ const config = {
     extend: {
       backgroundImage: {
         'dot-pattern':
-          'radial-gradient(#343434 0.5px, transparent 0.5px), radial-gradient(#343434 0.5px, #0b0b0b 0.5px)',
+          'radial-gradient(#5C5C5C 0.5px, transparent 0.5px), radial-gradient(#5C5C5C 0.5px, #0b0b0b 0.5px)',
       },
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
@@ -41,9 +41,8 @@ const config = {
         background: 'var(--background)',
         foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
+          DEFAULT: 'var(--primary)',
           foreground: 'var(--primary-foreground)',
-          border: 'var(--primary-border)',
         },
         border: {
           DEFAULT: 'var(--border)',
