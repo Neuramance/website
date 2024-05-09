@@ -9,10 +9,10 @@ import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 
 export default function Page() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center">
+    <div className="flex min-h-screen flex-col items-center justify-center">
       <div className="pointer-events-none absolute inset-0 overflow-hidden"></div>
 
-      <Card className="z-0 mb-1 w-[420px] border-[0.5px]">
+      <Card className="z-0 w-[420px]">
         <CardHeader>
           <CardTitle>Contact us.</CardTitle>
           <CardDescription>
@@ -26,6 +26,6 @@ export default function Page() {
           </div>
         </CardContent>
       </Card>
-    </main>
+    </div>
   );
 }

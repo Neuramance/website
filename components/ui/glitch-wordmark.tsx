@@ -5,7 +5,17 @@ import { useGlitch } from 'react-powerglitch';
 export default function GlitchWordmark() {
   const glitch = useGlitch({
     timing: {
-      duration: 10000,
+      duration: 15000,
+    },
+    glitchTimeSpan: {
+      /**
+       * Start time of the glitch in percent, between 0 and 1.
+       */
+      start: 0.95,
+      /**
+       * End time of the glitch in percent, between 0 and 1.
+       */
+      end: 1.0,
     },
   });
   return (

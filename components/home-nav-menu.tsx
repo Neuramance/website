@@ -12,7 +12,7 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import { cn } from '@/lib/utils';
-import { ArrowTopRightIcon } from '@radix-ui/react-icons';
+import { Library, Send } from 'lucide-react';
 import Link from 'next/link';
 import * as React from 'react';
 
@@ -70,13 +70,15 @@ export default function HomeNavMenu() {
         <NavigationMenuItem>
           <Link href="/chat" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Chat <ArrowTopRightIcon className="ml-1 h-3 w-3" />
+              <Library className="mr-1 h-3 w-3" />
+              Chat
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/contact" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              <Send className="mr-1 h-3 w-3" />
               Contact
             </NavigationMenuLink>
           </Link>
