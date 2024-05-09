@@ -21,8 +21,8 @@ export default function HomeNavMenu() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>
-            <Badge variant="outline" className="mr-2">
+          <NavigationMenuTrigger className="text-[#ededed]">
+            <Badge variant="outline" className="mr-2 text-[#ededed]">
               Coming soon
             </Badge>
             Command Center{' '}
@@ -67,7 +67,7 @@ export default function HomeNavMenu() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        <NavigationMenuItem className="text-[#ededed]">
           <Link href="/chat" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               <Library className="mr-1 h-3 w-3" />
@@ -75,7 +75,7 @@ export default function HomeNavMenu() {
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        <NavigationMenuItem className="text-[#ededed]">
           <Link href="/contact" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               <Send className="mr-1 h-3 w-3" />

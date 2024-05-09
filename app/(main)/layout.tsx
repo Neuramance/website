@@ -1,4 +1,5 @@
 import HomepageNav from '@/components/nav';
+import { Toaster } from '@/components/ui/toaster';
 import '@/styles/global.css';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -6,6 +7,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className="">
       <HomepageNav />
       {children}
+      <Toaster />
     </div>
   );
 }

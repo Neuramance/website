@@ -18,6 +18,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { useToast } from '@/components/ui/use-toast';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -44,9 +45,14 @@ export default function AccountForm({ user }: { user: User | null }) {
     },
   });
 
+  const { toast } = useToast();
+
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
     updateProfile({ name: values.name });
+    toast({
+      title: 'Profile updated',
+      description: 'Refresh the page to see changes.',
+    });
   }
 
   const supabase = createClient();

@@ -81,12 +81,11 @@ export default function Avatar({
             height={size}
             src={avatarUrl}
             alt="Avatar"
-            className="avatar image rounded-full"
+            className="rounded-full"
             style={{ width: size, height: size, display: 'block' }} // Ensure the image fills the label
           />
         ) : (
           <div
-            className="avatar no-image"
             style={{ height: size, width: size, display: 'block' }} // Match the dimensions and display
           />
         )}

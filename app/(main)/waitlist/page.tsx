@@ -5,14 +5,14 @@ import { Terminal } from 'lucide-react';
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
-      <div className="pointer-events-none absolute inset-0 overflow-hidden bg-dot-pattern bg-[size:20px_20px] bg-[position:0_0,10px_10px]"></div>
+      <div className="pointer-events-none absolute inset-0 overflow-hidden"></div>
 
       <Alert className="w-[600px] bg-secondary">
         <Terminal className="h-4 w-4" />
-        <AlertTitle>You are on the waitlist. 👍</AlertTitle>
+        <AlertTitle>You are on the waitlist.</AlertTitle>
         <AlertDescription>
-          Thank you very much for your interest in Neuramance, we sincerly
-          appreciate it. <br />
+          Thank you very much for your interest in Neuramance.
+          <br />
           <br />
           <strong>Neuramance Command Center</strong> is currently in private
           beta, as we are still working on building the product.
