@@ -14,12 +14,8 @@ export default function Page() {
           Thank you very much for your interest in Neuramance.
           <br />
           <br />
-          <strong>Neuramance Command Center</strong> is currently in private
+          <strong>Neuramance</strong> is currently in private
           beta, as we are still working on building the product.
-          <br />
-          <br />
-          Please enjoy <strong>Neuramance Chat</strong> in the meantime, as we
-          continously push updates & improvements to it as well.
           <br />
           <br />
           Look out for emails containing updates & news, including beta access.

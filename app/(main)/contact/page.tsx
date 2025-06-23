@@ -20,7 +20,7 @@ export default function Page() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center gap-2 font-mono">
+          <div className="flex text-sm items-center gap-2 font-mono">
             <EnvelopeClosedIcon />
             austin@neuramance.com
           </div>

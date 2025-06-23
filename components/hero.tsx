@@ -9,14 +9,10 @@ export function Hero() {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col justify-center space-y-8 text-center">
           <div className="space-y-2">
-            <h1 className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-3xl font-bold tracking-tight text-transparent ss-disambiguation sm:text-5xl sm:leading-tight xl:text-6xl/none xl:leading-tight">
-              The Ultimate Command Center For AI.
+            <h1 className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-sm font-bold tracking-tight text-transparent ss-disambiguation sm:text-sm sm:leading-tight xl:text-sm/none xl:leading-tight">
+            The Preliminary Brain-Machine Interface for Financial Markets.
             </h1>
-            <p className="text-zinc-200\ mx-auto max-w-[600px] ss-i-with-serif dark:text-zinc-100 md:text-xl">
-              Neuramance is the ultimate modern command center for everyday AI.
-              Deploy autonomous agents that collaborate, oversee agentic
-              productivity, query knowledge, & much more.
-            </p>
+            
           </div>
         </div>
       </div>
