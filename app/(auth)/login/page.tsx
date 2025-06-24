@@ -9,7 +9,7 @@ export default async function Page() {
     <div className="flex min-h-screen items-center justify-center bg-background">
       <AuthNav />
       <div className="flex w-full max-w-sm flex-col justify-start gap-3 p-8">
-        <h1 className="mb-8 text-center text-3xl font-semibold">
+        <h1 className="mb-8 text-center text-2xl font-semibold">
           Log in to Neuramance
         </h1>
 

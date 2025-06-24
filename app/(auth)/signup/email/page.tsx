@@ -5,7 +5,7 @@ export default async function Page() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background">
       <AuthNav />
-      <EmailAuthForm title="Create your Neuramance account" />
+      <EmailAuthForm title={'Create your\nNeuramance account'} />
     </div>
   );
 }
