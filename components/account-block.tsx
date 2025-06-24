@@ -12,7 +12,7 @@ export default async function AccountBlock() {
   } = await supabase.auth.getUser();
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-1">
       {user ? (
         <AccountDropdownMenu user={user} />
       ) : (

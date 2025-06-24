@@ -23,7 +23,7 @@ export default function HomeNavMenu() {
         <NavigationMenuItem className="text-[#ededed]">
           <Link href="/contact" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              <Send className="mr-1 h-3 w-3" />
+              <Send className="mr-1 h-[10px] w-[10px]" />
               Contact
             </NavigationMenuLink>
           </Link>
