@@ -27,7 +27,7 @@ import { type User } from '@supabase/supabase-js';
 import { useCallback, useEffect, useState } from 'react';
 
 const formSchema = z.object({
-  name: z
+  full_name: z
     .string()
     .min(3, {
       message: 'Name must be at least 3 characters.',
@@ -41,14 +41,14 @@ export default function AccountForm({ user }: { user: User | null }) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
+      full_name: '',
     },
   });
 
   const { toast } = useToast();
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    updateProfile({ name: values.name });
+    updateProfile({ full_name: values.full_name });
     toast({
       title: 'Profile updated',
       description: 'Refresh the page to see changes.',
@@ -57,7 +57,7 @@ export default function AccountForm({ user }: { user: User | null }) {
 
   const supabase = createClient();
   const [loading, setLoading] = useState(true);
-  const [name, setName] = useState<string | null>(null);
+  const [full_name, setFullName] = useState<string | null>(null);
   const [avatar_url, setAvatarUrl] = useState<string | null>(null);
 
   const getProfile = useCallback(async () => {
@@ -66,7 +66,7 @@ export default function AccountForm({ user }: { user: User | null }) {
 
       const { data, error, status } = await supabase
         .from('profiles')
-        .select(`name, avatar_url`)
+        .select(`full_name, avatar_url`)
         .eq('id', user?.id)
         .single();
 
@@ -76,7 +76,7 @@ export default function AccountForm({ user }: { user: User | null }) {
       }
 
       if (data) {
-        setName(data.name);
+        setFullName(data.full_name);
         setAvatarUrl(data.avatar_url);
       }
     } catch (error) {
@@ -90,14 +90,20 @@ export default function AccountForm({ user }: { user: User | null }) {
     getProfile();
   }, [user, getProfile]);
 
-  async function updateProfile({ name }: { name: string | null }) {
+  useEffect(() => {
+    if (full_name) {
+      form.setValue('full_name', full_name);
+    }
+  }, [full_name, form]);
+
+  async function updateProfile({ full_name }: { full_name: string | null }) {
     try {
       setLoading(true);
 
       const { error } = await supabase
         .from('profiles')
         .update({
-          name: name,
+          full_name: full_name,
           updated_at: new Date().toISOString(),
         })
         .eq('id', user?.id);
@@ -163,12 +169,12 @@ export default function AccountForm({ user }: { user: User | null }) {
             >
               <FormField
                 control={form.control}
-                name="name"
+                name="full_name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Name</FormLabel>
+                    <FormLabel>Display Name</FormLabel>
                     <FormControl>
-                      <Input placeholder={name || ''} {...field} />
+                      <Input placeholder="Enter your display name" {...field} />
                     </FormControl>
                     <FormDescription>
                       This is your public display name.

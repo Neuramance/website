@@ -1,5 +1,10 @@
-import { Plus } from 'lucide-react';
+'use client';
+
+import { Plus, Check } from 'lucide-react';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { createClient } from '@/lib/supabase/client';
+import { User } from '@supabase/supabase-js';
 
 import { Button } from './ui/button';
 import GlitchWordmark from './ui/glitch-wordmark';
@@ -11,8 +16,19 @@ import { Icons } from './ui/icons';
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
 export function Hero() {
+  const [user, setUser] = useState<User | null>(null);
+  const supabase = createClient();
+
+  useEffect(() => {
+    const getUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+    };
+    getUser();
+  }, [supabase]);
+
   return (
-    <section className="flex h-screen w-full items-center bg-background py-12 md:py-24 lg:py-32 xl:py-48">
+    <section className="relative flex h-screen w-full items-center bg-background py-12 md:py-24 lg:py-32 xl:py-48">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col justify-start space-y-8 text-left">
           <div className="space-y-4">
@@ -25,17 +41,28 @@ export function Hero() {
               <div className="flex flex-col items-center">
                 <Icons.faceLevel style={{ width: 150, height: 'auto' }} />
                 <div style={{ height: 3 }} />
-                <Link href="/signup" className="block">
-                  <Button size="nav" variant="secondary" className="gap-1">
-                    <Plus className="h-3 w-3" />
-                    Sign up for Waitlist / Beta
+                {user ? (
+                  <Button size="nav" variant="secondary" className="gap-1" disabled>
+                    <Check className="h-3 w-3" />
+                    Thank you very much for your interest. You are on the Waitlist.
                   </Button>
-                </Link>
+                ) : (
+                  <Link href="/signup" className="block">
+                    <Button size="nav" variant="secondary" className="gap-1">
+                      <Plus className="h-3 w-3" />
+                      Sign up for Waitlist / Beta
+                    </Button>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
         </div>
       </div>
+      {/* Bottom Centered h1 */}
+      <h1 className="absolute bottom-2 left-1/2 -translate-x-1/2 transform whitespace-nowrap text-center font-mono text-[10px] tracking-tight text-white ss-disambiguation sm:text-[10px] sm:leading-tight xl:text-[10px]/none xl:leading-tight">
+        Truth is a pathless land.
+      </h1>
     </section>
   );
 }

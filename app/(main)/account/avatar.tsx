@@ -81,12 +81,17 @@ export default function Avatar({
             height={size}
             src={avatarUrl}
             alt="Avatar"
-            className="rounded-full"
+            className="rounded-full border border-[#2f3336]"
             style={{ width: size, height: size, display: 'block' }} // Ensure the image fills the label
           />
         ) : (
-          <div
-            style={{ height: size, width: size, display: 'block' }} // Match the dimensions and display
+          <Image
+            width={size}
+            height={size}
+            src="/fallback-avatar.png"
+            alt="Default avatar"
+            className="rounded-full border border-[#2f3336]"
+            style={{ width: size, height: size, display: 'block' }}
           />
         )}
       </label>

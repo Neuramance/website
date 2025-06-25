@@ -1,6 +1,6 @@
 'use client';
 
-import { Avatar, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,11 +13,12 @@ import { logoutCurrentUser } from '@/lib/auth/actions';
 import { createClient } from '@/lib/supabase/client';
 import { User } from '@supabase/supabase-js';
 import { BadgePlus, LogOut, Settings } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function AccountDropdownMenu({ user }: { user: User }) {
-  const [name, setName] = useState<string | null>(null);
+  const [full_name, setFullName] = useState<string | null>(null);
   const [avatar_url, setAvatarUrl] = useState<string | null>(null);
   const [avatar_blob_url, setAvatarBlobUrl] = useState<string | null>(null);
 
@@ -28,7 +29,7 @@ export default function AccountDropdownMenu({ user }: { user: User }) {
       try {
         const { data, error, status } = await supabase
           .from('profiles')
-          .select(`name, avatar_url`)
+          .select(`full_name, avatar_url`)
           .eq('id', user?.id)
           .single();
 
@@ -38,7 +39,7 @@ export default function AccountDropdownMenu({ user }: { user: User }) {
         }
 
         if (data) {
-          setName(data.name);
+          setFullName(data.full_name);
           setAvatarUrl(data.avatar_url);
         }
       } catch (error) {
@@ -73,14 +74,25 @@ export default function AccountDropdownMenu({ user }: { user: User }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="focus:outline-none">
-        <div className="flex h-9 w-9 items-center justify-center rounded-full hover:bg-accent">
-          <Avatar className="relative h-7 w-7 cursor-pointer">
-            {avatar_blob_url && <AvatarImage src={avatar_blob_url} />}
-          </Avatar>
+        <div className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-accent">
+          <div className="border-1 rounded-full border-[#2f3336]">
+            <Avatar className="relative h-6 w-6 cursor-pointer">
+              {avatar_blob_url && <AvatarImage src={avatar_blob_url} />}
+              <AvatarFallback>
+                <Image
+                  src="/fallback-avatar.png"
+                  alt="Default avatar"
+                  width={28}
+                  height={28}
+                  className="object-cover"
+                />
+              </AvatarFallback>
+            </Avatar>
+          </div>
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="mr-2 mt-3 min-w-60">
-        <DropdownMenuLabel className="text-base">{name}</DropdownMenuLabel>
+      <DropdownMenuContent className="min-w-60 mr-[6px] mt-2">
+        <DropdownMenuLabel className="text-base">{full_name}</DropdownMenuLabel>
         <DropdownMenuLabel className="py-0 pb-2 font-normal text-muted-foreground">
           {user.email}
         </DropdownMenuLabel>
@@ -94,7 +106,7 @@ export default function AccountDropdownMenu({ user }: { user: User }) {
         </Link>
         <Link target="_blank" href={'https://x.com/neuramance'}>
           <DropdownMenuItem>
-            <span>Follow on X (Twitter)</span>
+            <span>Follow us on X (Twitter)</span>
             <BadgePlus className="h-4 w-4" />
           </DropdownMenuItem>
         </Link>

@@ -29,7 +29,7 @@ export function EmailAuthForm({ title }: EmailAuthFormProps) {
     <>
       {!emailSent ? (
         <div className="w-sm flex max-w-sm flex-col justify-start gap-3 rounded-lg p-8">
-          <h1 className="mb-8 whitespace-pre-line text-center text-2xl font-semibold">
+          <h1 className="mb-4 whitespace-pre-line text-center text-2xl font-semibold">
             {title}
           </h1>
           <form onSubmit={handleFormSubmit} className="flex flex-col space-y-3">
@@ -52,7 +52,7 @@ export function EmailAuthForm({ title }: EmailAuthFormProps) {
         </div>
       ) : (
         <div className="flex w-full max-w-2xl flex-col justify-start gap-3 rounded-lg p-8">
-          <h1 className="mb-8 text-center text-2xl font-semibold">
+          <h1 className="mb-4 text-center text-2xl font-semibold">
             Check your email
           </h1>
 

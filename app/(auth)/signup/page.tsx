@@ -10,7 +10,7 @@ export default function Page() {
       <AuthNav />
 
       <div className="w-xs flex max-w-xs flex-col gap-3">
-        <h1 className="mb-8 text-center text-2xl font-semibold">
+        <h1 className="mb-4 text-center text-2xl font-semibold">
           Create your<br></br> Neuramance account
         </h1>
 
