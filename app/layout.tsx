@@ -1,4 +1,5 @@
 import UserStatus from '@/components/dev/user-status';
+import { AudioProvider } from '@/lib/contexts/AudioContext';
 import { cn } from '@/lib/utils';
 import '@/styles/global.css';
 import { GeistMono } from 'geist/font/mono';
@@ -33,8 +34,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           GeistMono.variable,
         )}
       >
-        {children}
-        {process.env.DEV_TOOLS === '1' && <UserStatus />}
+        <AudioProvider>
+          {children}
+          {process.env.DEV_TOOLS === '1' && <UserStatus />}
+        </AudioProvider>
       </body>
     </html>
   );

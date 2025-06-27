@@ -1,11 +1,12 @@
 'use client';
 
-import { Plus, Check } from 'lucide-react';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { User } from '@supabase/supabase-js';
+import { Check, Plus } from 'lucide-react';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
+import { useGlobalAudio } from '@/lib/contexts/AudioContext';
 import { Button } from './ui/button';
 import GlitchWordmark from './ui/glitch-wordmark';
 import { Icons } from './ui/icons';
@@ -18,14 +19,27 @@ import { Icons } from './ui/icons';
 export function Hero() {
   const [user, setUser] = useState<User | null>(null);
   const supabase = createClient();
+  const { playOverlayTrack } = useGlobalAudio();
 
   useEffect(() => {
     const getUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
       setUser(user);
     };
     getUser();
   }, [supabase]);
+
+  const handleQuoteClick = () => {
+    try {
+      playOverlayTrack('/audio/dune1-intro.mp3', 'dune1-quote', 'Dune 1 Quote');
+    } catch (error) {
+      console.warn(
+        'Dune 1 audio file not found. Please add dune1-intro.mp3 to /public/audio/',
+      );
+    }
+  };
 
   return (
     <section className="relative flex h-screen w-full items-center bg-background py-12 md:py-24 lg:py-32 xl:py-48">
@@ -33,18 +47,25 @@ export function Hero() {
         <div className="flex flex-col justify-start space-y-8 text-left">
           <div className="space-y-4">
             <GlitchWordmark />
-            <h1 className="bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent ss-disambiguation sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
+            <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
               PRODUCT 01 : <br></br>Preliminary Cyberware Interface for
-              Hyperanalysis of Financial Markets.
+              Turbocognition, Hyperanalysis, & Enjoymentmaxxing of Multimedia,
+              Literature, & Markets.
             </h1>
             <div className="flex flex-col items-start">
               <div className="flex flex-col items-center">
                 <Icons.faceLevel style={{ width: 150, height: 'auto' }} />
                 <div style={{ height: 3 }} />
                 {user ? (
-                  <Button size="nav" variant="secondary" className="gap-1" disabled>
+                  <Button
+                    size="nav"
+                    variant="secondary"
+                    className="gap-1"
+                    disabled
+                  >
                     <Check className="h-3 w-3" />
-                    Thank you very much for your interest. You are on the Waitlist.
+                    Thank you very much for your interest. You are on the
+                    Waitlist.
                   </Button>
                 ) : (
                   <Link href="/signup" className="block">
@@ -60,8 +81,16 @@ export function Hero() {
         </div>
       </div>
       {/* Bottom Centered h1 */}
-      <h1 className="absolute bottom-2 left-1/2 -translate-x-1/2 transform whitespace-nowrap text-center font-mono text-[10px] tracking-tight text-white ss-disambiguation sm:text-[10px] sm:leading-tight xl:text-[10px]/none xl:leading-tight">
-        Truth is a pathless land.
+      <h1
+        className="ss-disambiguation absolute bottom-2 left-1/2 -translate-x-1/2 transform whitespace-nowrap text-center font-mono text-[10px] tracking-tight text-white hover:cursor-pointer sm:text-[10px] sm:leading-tight xl:text-[10px]/none xl:leading-tight"
+        onClick={handleQuoteClick}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === 'Enter' && handleQuoteClick()}
+        aria-label="Play Dune 1 audio quote"
+      >
+        Truth is a pathless land. It’s murmur a guiding star from the Outside,
+        intuitable only in brief moments of rapture.
       </h1>
     </section>
   );
