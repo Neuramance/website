@@ -1,6 +1,12 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 interface AudioTrack {
   id: string;
@@ -59,15 +65,15 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     overlayAudioRef.current = overlayAudio;
 
     const handleLoadStart = () => {
-      setAudioState(prev => ({ ...prev, isLoading: true, error: null }));
+      setAudioState((prev) => ({ ...prev, isLoading: true, error: null }));
     };
 
     const handleCanPlay = () => {
-      setAudioState(prev => ({ ...prev, isLoading: false }));
+      setAudioState((prev) => ({ ...prev, isLoading: false }));
     };
 
     const handleError = () => {
-      setAudioState(prev => ({
+      setAudioState((prev) => ({
         ...prev,
         error: 'Failed to load audio file',
         isLoading: false,
@@ -76,19 +82,19 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     };
 
     const handleLoadedMetadata = () => {
-      setAudioState(prev => ({ ...prev, duration: audio.duration }));
+      setAudioState((prev) => ({ ...prev, duration: audio.duration }));
     };
 
     const handleTimeUpdate = () => {
-      setAudioState(prev => ({ ...prev, currentTime: audio.currentTime }));
+      setAudioState((prev) => ({ ...prev, currentTime: audio.currentTime }));
     };
 
     const handleEnded = () => {
-      setAudioState(prev => ({ ...prev, isPlaying: false, currentTime: 0 }));
+      setAudioState((prev) => ({ ...prev, isPlaying: false, currentTime: 0 }));
     };
 
     const handleVolumeChange = () => {
-      setAudioState(prev => ({
+      setAudioState((prev) => ({
         ...prev,
         volume: audio.volume,
         isMuted: audio.muted,
@@ -97,15 +103,16 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
 
     // Overlay audio ended - resume background
     const handleOverlayEnded = () => {
-      setAudioState(prev => {
+      setAudioState((prev) => {
         if (prev.isPausedForOverlay && prev.backgroundTrack) {
-          audio.play()
+          audio
+            .play()
             .then(() => {
-              setAudioState(current => ({ 
-                ...current, 
+              setAudioState((current) => ({
+                ...current,
                 currentTrack: current.backgroundTrack,
                 isPlaying: true,
-                isPausedForOverlay: false 
+                isPausedForOverlay: false,
               }));
             })
             .catch(console.error);
@@ -121,7 +128,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     audio.addEventListener('timeupdate', handleTimeUpdate);
     audio.addEventListener('ended', handleEnded);
     audio.addEventListener('volumechange', handleVolumeChange);
-    
+
     overlayAudio.addEventListener('ended', handleOverlayEnded);
 
     return () => {
@@ -132,9 +139,9 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
       audio.removeEventListener('timeupdate', handleTimeUpdate);
       audio.removeEventListener('ended', handleEnded);
       audio.removeEventListener('volumechange', handleVolumeChange);
-      
+
       overlayAudio.removeEventListener('ended', handleOverlayEnded);
-      
+
       audio.pause();
       overlayAudio.pause();
     };
@@ -154,16 +161,24 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
           return; // Already playing
         } else {
           // Resume current track
-          audioRef.current.play()
+          audioRef.current
+            .play()
             .then(() => {
-              setAudioState(prev => ({ ...prev, isPlaying: true }));
+              setAudioState((prev) => ({ ...prev, isPlaying: true }));
             })
             .catch((err) => {
               console.error('Error resuming audio:', err);
               if (err.name === 'NotAllowedError') {
-                setAudioState(prev => ({ ...prev, error: 'Autoplay blocked by browser. Click anywhere to enable audio.' }));
+                setAudioState((prev) => ({
+                  ...prev,
+                  error:
+                    'Autoplay blocked by browser. Click anywhere to enable audio.',
+                }));
               } else {
-                setAudioState(prev => ({ ...prev, error: 'Failed to resume audio' }));
+                setAudioState((prev) => ({
+                  ...prev,
+                  error: 'Failed to resume audio',
+                }));
               }
             });
           return;
@@ -171,24 +186,32 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
       }
 
       // Load new track
-      setAudioState(prev => ({ 
-        ...prev, 
+      setAudioState((prev) => ({
+        ...prev,
         currentTrack: track,
-        backgroundTrack: track // Store as background track for red.mp3
+        backgroundTrack: track, // Store as background track for Malum - Stasis.mp3
       }));
       audioRef.current.src = src;
       audioRef.current.load();
 
-      audioRef.current.play()
+      audioRef.current
+        .play()
         .then(() => {
-          setAudioState(prev => ({ ...prev, isPlaying: true }));
+          setAudioState((prev) => ({ ...prev, isPlaying: true }));
         })
         .catch((err) => {
           console.error('Error playing audio:', err);
           if (err.name === 'NotAllowedError') {
-            setAudioState(prev => ({ ...prev, error: 'Autoplay blocked by browser. Click anywhere to enable audio.' }));
+            setAudioState((prev) => ({
+              ...prev,
+              error:
+                'Autoplay blocked by browser. Click anywhere to enable audio.',
+            }));
           } else {
-            setAudioState(prev => ({ ...prev, error: 'Failed to play audio' }));
+            setAudioState((prev) => ({
+              ...prev,
+              error: 'Failed to play audio',
+            }));
           }
         });
     }
@@ -199,32 +222,32 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
       // Pause background music if playing
       if (audioState.isPlaying && audioState.currentTrack) {
         audioRef.current.pause();
-        setAudioState(prev => ({ 
-          ...prev, 
+        setAudioState((prev) => ({
+          ...prev,
           isPlaying: false,
-          isPausedForOverlay: true 
+          isPausedForOverlay: true,
         }));
       }
 
       // Play overlay audio
       overlayAudioRef.current.src = src;
       overlayAudioRef.current.load();
-      overlayAudioRef.current.play()
-        .catch((err) => {
-          console.error('Error playing overlay audio:', err);
-          // If overlay fails, resume background
-          if (audioState.isPausedForOverlay && audioRef.current) {
-            audioRef.current.play()
-              .then(() => {
-                setAudioState(prev => ({ 
-                  ...prev, 
-                  isPlaying: true,
-                  isPausedForOverlay: false 
-                }));
-              })
-              .catch(console.error);
-          }
-        });
+      overlayAudioRef.current.play().catch((err) => {
+        console.error('Error playing overlay audio:', err);
+        // If overlay fails, resume background
+        if (audioState.isPausedForOverlay && audioRef.current) {
+          audioRef.current
+            .play()
+            .then(() => {
+              setAudioState((prev) => ({
+                ...prev,
+                isPlaying: true,
+                isPausedForOverlay: false,
+              }));
+            })
+            .catch(console.error);
+        }
+      });
     }
   };
 
@@ -232,13 +255,14 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     if (track) {
       playTrack(track.src, track.id, track.title);
     } else if (audioRef.current) {
-      audioRef.current.play()
+      audioRef.current
+        .play()
         .then(() => {
-          setAudioState(prev => ({ ...prev, isPlaying: true }));
+          setAudioState((prev) => ({ ...prev, isPlaying: true }));
         })
         .catch((err) => {
           console.error('Error playing audio:', err);
-          setAudioState(prev => ({ ...prev, error: 'Failed to play audio' }));
+          setAudioState((prev) => ({ ...prev, error: 'Failed to play audio' }));
         });
     }
   };
@@ -246,7 +270,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
   const pause = () => {
     if (audioRef.current) {
       audioRef.current.pause();
-      setAudioState(prev => ({ ...prev, isPlaying: false }));
+      setAudioState((prev) => ({ ...prev, isPlaying: false }));
     }
   };
 
@@ -254,19 +278,23 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
-      setAudioState(prev => ({ ...prev, isPlaying: false, currentTime: 0 }));
+      setAudioState((prev) => ({ ...prev, isPlaying: false, currentTime: 0 }));
     }
   };
 
   const resume = () => {
     if (audioRef.current && !audioState.isPlaying) {
-      audioRef.current.play()
+      audioRef.current
+        .play()
         .then(() => {
-          setAudioState(prev => ({ ...prev, isPlaying: true }));
+          setAudioState((prev) => ({ ...prev, isPlaying: true }));
         })
         .catch((err) => {
           console.error('Error resuming audio:', err);
-          setAudioState(prev => ({ ...prev, error: 'Failed to resume audio' }));
+          setAudioState((prev) => ({
+            ...prev,
+            error: 'Failed to resume audio',
+          }));
         });
     }
   };
@@ -285,7 +313,10 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
 
   const seek = (time: number) => {
     if (audioRef.current) {
-      audioRef.current.currentTime = Math.max(0, Math.min(audioState.duration, time));
+      audioRef.current.currentTime = Math.max(
+        0,
+        Math.min(audioState.duration, time),
+      );
     }
   };
 
