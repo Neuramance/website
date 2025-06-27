@@ -89,7 +89,7 @@ export function Hero() {
         onKeyDown={(e) => e.key === 'Enter' && handleQuoteClick()}
         aria-label="Play Dune 1 audio quote"
       >
-        Truth is a pathless land. It’s murmur a guiding star from the Outside,
+        Truth is a pathless land: it’s murmur a guiding star from the Outside,
         intuitable only in brief moments of rapture.
       </h1>
     </section>
