@@ -34,15 +34,15 @@ export default function Page() {
               CONTACT US : <br></br>Reach out about questions, partnerships, or
               anything else.<br></br>No time wasting, please.
             </h1>
-            <div 
-              className="w-[300px] h-[200px] flex items-start justify-start hover:cursor-pointer -mt-[75px]"
+            <div
+              className="-mt-[75px] flex h-[200px] w-[300px] items-start justify-start hover:cursor-pointer"
               onClick={handleEmailClick}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => e.key === 'Enter' && handleEmailClick()}
               aria-label="Play got mail sound"
             >
-              <div className="flex items-center space-x-2 mt-[75px]">
+              <div className="mt-[75px] flex items-center space-x-2">
                 <EnvelopeClosedIcon className="h-3 w-3" />
                 <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
                   wires@neuramance.com
@@ -61,8 +61,8 @@ export default function Page() {
         onKeyDown={(e) => e.key === 'Enter' && handleQuoteClick()}
         aria-label="Play Dune 2 audio quote"
       >
-        A million years pass on top of each other every night. It's always 3am
-        online. What are you doing to make it a billion?
+        A million years pass on top of each other every night. It&apos;s always
+        3am online. What are you doing to make it a billion?
       </h1>
     </section>
   );
