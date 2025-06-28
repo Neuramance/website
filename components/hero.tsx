@@ -41,6 +41,16 @@ export function Hero() {
     }
   };
 
+  const handleSignupClick = () => {
+    try {
+      playOverlayTrack('/audio/360noscope.mp3', '360noscope', '360 No Scope Sound');
+    } catch (error) {
+      console.warn(
+        '360noscope audio file not found. Please add 360noscope.mp3 to /public/audio/',
+      );
+    }
+  };
+
   return (
     <section className="relative flex h-screen w-full items-center bg-background py-12 md:py-24 lg:py-32 xl:py-48">
       <div className="container px-4 md:px-6">
@@ -69,7 +79,7 @@ export function Hero() {
                     Waitlist.
                   </Button>
                 ) : (
-                  <Link href="/signup" className="block">
+                  <Link href="/signup" className="block" onClick={handleSignupClick}>
                     <Button size="nav" variant="secondary" className="gap-1">
                       <Plus className="h-3 w-3" />
                       Sign up for Waitlist / Beta
