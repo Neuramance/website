@@ -14,8 +14,8 @@ export function AudioEnabler() {
       const timer = setTimeout(() => {
         setHasAttemptedAutoplay(true);
         playTrack(
-          '/audio/Malum - Stasis.mp3',
-          'stasis-background',
+          '/audio/red.mp3',
+          'red-background',
           'Background Music',
         );
       }, 1000);
@@ -36,8 +36,8 @@ export function AudioEnabler() {
   const handleEnableAudio = () => {
     setShowOverlay(false);
     playTrack(
-      '/audio/Malum - Stasis.mp3',
-      'stasis-background',
+      '/audio/red.mp3',
+      'red-background',
       'Background Music',
     );
   };

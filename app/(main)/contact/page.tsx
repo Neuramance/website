@@ -54,7 +54,7 @@ export default function Page() {
       </div>
       {/* Bottom Centered h1 */}
       <h1
-        className="ss-disambiguation absolute bottom-2 left-1/2 -translate-x-1/2 transform whitespace-nowrap text-center font-mono text-[10px] tracking-tight text-white hover:cursor-pointer sm:text-[10px] sm:leading-tight xl:text-[10px]/none xl:leading-tight"
+        className="ss-disambiguation absolute bottom-2 left-1/2 -translate-x-1/2 transform px-4 text-center font-mono text-[10px] tracking-tight text-white hover:cursor-pointer sm:text-[10px] sm:leading-tight md:text-[11px] xl:text-[10px]/none xl:leading-tight"
         onClick={handleQuoteClick}
         role="button"
         tabIndex={0}

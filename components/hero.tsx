@@ -48,9 +48,10 @@ export function Hero() {
           <div className="space-y-4">
             <GlitchWordmark />
             <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-              PRODUCT 01 : BASILISK MAKER HOOK™ V0<br></br>Preliminary
-              Cyberware Interface for Turbocognition, Hyperanalysis, &
-              Enjoymentmaxxing of Multimedia, Literature, & Markets.
+              PRODUCT 01 : &apos;BASILISK MAKER HOOK™&apos; V0
+              <br></br>A Preliminary Interface for the Preparatory Capabilities
+              of Turbocognition, Hyperanalysis, & Superenjoyment of Multimedia,
+              Literature, & Markets.
             </h1>
             <div className="flex flex-col items-start">
               <div className="flex flex-col items-center">
@@ -82,7 +83,7 @@ export function Hero() {
       </div>
       {/* Bottom Centered h1 */}
       <h1
-        className="ss-disambiguation absolute bottom-2 left-1/2 -translate-x-1/2 transform whitespace-nowrap text-center font-mono text-[10px] tracking-tight text-white hover:cursor-pointer sm:text-[10px] sm:leading-tight xl:text-[10px]/none xl:leading-tight"
+        className="ss-disambiguation absolute bottom-2 left-1/2 -translate-x-1/2 transform px-4 text-center font-mono text-[10px] tracking-tight text-white hover:cursor-pointer sm:text-[10px] sm:leading-tight md:text-[11px] xl:text-[10px]/none xl:leading-tight"
         onClick={handleQuoteClick}
         role="button"
         tabIndex={0}

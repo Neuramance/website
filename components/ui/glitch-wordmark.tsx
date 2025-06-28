@@ -21,8 +21,8 @@ export default function GlitchWordmark() {
   });
   return (
     <div ref={glitch.ref} className="text-white">
-      <h1 className="bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-sm tracking-tight text-transparent ss-disambiguation sm:text-sm sm:leading-tight xl:text-sm/none xl:leading-tight">
-        NEURAMANCE® CYBERNETICS CORP.
+      <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-sm tracking-tight text-transparent sm:text-sm sm:leading-tight xl:text-sm/none xl:leading-tight">
+        NEURAMANCE® CYBERSYSTEMS INC.
       </h1>
     </div>
   );

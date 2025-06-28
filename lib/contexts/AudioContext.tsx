@@ -189,7 +189,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
       setAudioState((prev) => ({
         ...prev,
         currentTrack: track,
-        backgroundTrack: track, // Store as background track for Malum - Stasis.mp3
+        backgroundTrack: track, // Store as background track for red.mp3
       }));
       audioRef.current.src = src;
       audioRef.current.load();
