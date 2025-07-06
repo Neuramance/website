@@ -4,29 +4,44 @@ import { useGlobalAudio } from '@/lib/contexts/AudioContext';
 import { useEffect, useState } from 'react';
 
 export function AudioEnabler() {
-  const { playTrack, error, isPlaying, currentTrack } = useGlobalAudio();
+  const { playTrack, error, isPlaying, currentTrack, browserInfo, hasUserInteracted } = useGlobalAudio();
   const [showOverlay, setShowOverlay] = useState(false);
   const [hasAttemptedAutoplay, setHasAttemptedAutoplay] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
-    // Attempt autoplay after a short delay
+    // Attempt autoplay after a short delay, but only if likely to succeed
     if (!hasAttemptedAutoplay) {
       const timer = setTimeout(() => {
         setHasAttemptedAutoplay(true);
+        
+        // For desktop Safari, wait for user interaction before attempting autoplay
+        if (browserInfo.isDesktopSafari && !hasUserInteracted) {
+          setShowOverlay(true);
+          return;
+        }
+        
+        // For mobile Safari, always show overlay first
+        if (browserInfo.isMobileSafari) {
+          setShowOverlay(true);
+          return;
+        }
+        
+        // For other browsers, attempt autoplay
         playTrack(
-          '/audio/red.mp3',
-          'red-background',
+          '/audio/malum - stasis.mp3',
+          'malum-stasis-background',
           'Background Music',
         );
       }, 1000);
 
       return () => clearTimeout(timer);
     }
-  }, [hasAttemptedAutoplay, playTrack]);
+  }, [hasAttemptedAutoplay, playTrack, browserInfo, hasUserInteracted]);
 
   useEffect(() => {
     // Show overlay if autoplay is blocked
-    if (error && error.includes('Autoplay blocked')) {
+    if (error && (error.includes('Autoplay blocked') || error.includes('Safari autoplay blocked') || error.includes('Mobile Safari requires'))) {
       setShowOverlay(true);
     } else if (isPlaying && currentTrack) {
       setShowOverlay(false);
@@ -35,12 +50,42 @@ export function AudioEnabler() {
 
   const handleEnableAudio = () => {
     setShowOverlay(false);
-    playTrack(
-      '/audio/red.mp3',
-      'red-background',
-      'Background Music',
-    );
+    setRetryCount(prev => prev + 1);
+    
+    // For Safari, add a small delay to ensure user gesture is properly processed
+    if (browserInfo.isSafari) {
+      setTimeout(() => {
+        playTrack(
+          '/audio/malum - stasis.mp3',
+          'malum-stasis-background',
+          'Background Music',
+        );
+      }, 100);
+    } else {
+      playTrack(
+        '/audio/malum - stasis.mp3',
+        'malum-stasis-background',
+        'Background Music',
+      );
+    }
   };
+
+  // Auto-retry logic for Safari if audio still fails after user interaction
+  useEffect(() => {
+    if (hasUserInteracted && retryCount > 0 && retryCount < 3 && 
+        error && browserInfo.isSafari && !isPlaying) {
+      const retryTimer = setTimeout(() => {
+        playTrack(
+          '/audio/malum - stasis.mp3',
+          'malum-stasis-background',
+          'Background Music',
+        );
+        setRetryCount(prev => prev + 1);
+      }, 1000);
+      
+      return () => clearTimeout(retryTimer);
+    }
+  }, [hasUserInteracted, retryCount, error, browserInfo.isSafari, isPlaying, playTrack]);
 
   if (!showOverlay) return null;
 
@@ -62,15 +107,22 @@ export function AudioEnabler() {
             />
           </svg>
         </div>
-        <h2 className="mb-2 text-lg font-semibold text-white">Enable Audio</h2>
+        <h2 className="mb-2 text-lg font-semibold text-white">
+          {browserInfo.isDesktopSafari ? 'Safari Audio Setup' : 
+           browserInfo.isMobileSafari ? 'Mobile Audio Setup' : 'Enable Audio'}
+        </h2>
         <p className="mb-4 text-sm text-gray-300">
-          Click to enable background audio for the full experience.
+          {browserInfo.isDesktopSafari ? 
+            'Safari requires permission to play audio. Click below to enable background music, or check Safari > Settings > Websites > Auto-Play.' :
+           browserInfo.isMobileSafari ?
+            'Tap below to enable background audio. Mobile Safari requires user interaction for audio playback.' :
+            'Click to enable background audio for the full experience.'}
         </p>
         <button
           onClick={handleEnableAudio}
           className="rounded-md bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:bg-gray-200"
         >
-          Enable Audio
+          {browserInfo.isMobileSafari ? 'Tap to Enable' : 'Enable Audio'}
         </button>
       </div>
     </div>

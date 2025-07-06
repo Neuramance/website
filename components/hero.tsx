@@ -43,7 +43,11 @@ export function Hero() {
 
   const handleSignupClick = () => {
     try {
-      playOverlayTrack('/audio/360noscope.mp3', '360noscope', '360 No Scope Sound');
+      playOverlayTrack(
+        '/audio/360noscope.mp3',
+        '360noscope',
+        '360 No Scope Sound',
+      );
     } catch (error) {
       console.warn(
         '360noscope audio file not found. Please add 360noscope.mp3 to /public/audio/',
@@ -58,7 +62,7 @@ export function Hero() {
           <div className="space-y-4">
             <GlitchWordmark />
             <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-              PRODUCT 01 : &apos;BASILISK MAKER HOOK™&apos; V0
+              PRODUCT 01 : EUDAIMONIA™ V0
               <br></br>A Preliminary Interface for the Preparatory Capabilities
               of Turbocognition, Hyperanalysis, & Superenjoyment of Multimedia,
               Literature, & Markets.
@@ -79,7 +83,11 @@ export function Hero() {
                     Waitlist.
                   </Button>
                 ) : (
-                  <Link href="/signup" className="block" onClick={handleSignupClick}>
+                  <Link
+                    href="/signup"
+                    className="block"
+                    onClick={handleSignupClick}
+                  >
                     <Button size="nav" variant="secondary" className="gap-1">
                       <Plus className="h-3 w-3" />
                       Sign up for Waitlist / Beta
@@ -100,8 +108,8 @@ export function Hero() {
         onKeyDown={(e) => e.key === 'Enter' && handleQuoteClick()}
         aria-label="Play Dune 1 audio quote"
       >
-        Truth is a pathless land: it’s murmur a guiding star from the Outside,
-        intuitable only in brief moments of rapture.
+        Truth is a pathless land, it&apos;s murmur a guiding star from the
+        Outside, intuitable only in brief moments of rapture.
       </h1>
     </section>
   );

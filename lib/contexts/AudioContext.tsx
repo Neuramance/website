@@ -8,6 +8,8 @@ import React, {
   useState,
 } from 'react';
 
+import { detectBrowser, markUserGesture, type BrowserInfo } from '@/lib/utils/browser-detection';
+
 interface AudioTrack {
   id: string;
   src: string;
@@ -25,6 +27,8 @@ interface AudioState {
   volume: number;
   isMuted: boolean;
   isPausedForOverlay: boolean;
+  hasUserInteracted: boolean;
+  browserInfo: BrowserInfo;
 }
 
 interface AudioContextType extends AudioState {
@@ -44,6 +48,7 @@ const AudioContext = createContext<AudioContextType | undefined>(undefined);
 export function AudioProvider({ children }: { children: React.ReactNode }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const overlayAudioRef = useRef<HTMLAudioElement | null>(null);
+  const browserInfo = detectBrowser();
   const [audioState, setAudioState] = useState<AudioState>({
     currentTrack: null,
     backgroundTrack: null,
@@ -55,12 +60,21 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     volume: 1,
     isMuted: false,
     isPausedForOverlay: false,
+    hasUserInteracted: false,
+    browserInfo,
   });
 
   // Initialize audio elements
   useEffect(() => {
     const audio = new Audio();
     const overlayAudio = new Audio();
+    
+    // Safari-specific audio optimization
+    if (browserInfo.isSafari) {
+      audio.preload = 'auto';
+      overlayAudio.preload = 'auto';
+    }
+    
     audioRef.current = audio;
     overlayAudioRef.current = overlayAudio;
 
@@ -131,6 +145,18 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
 
     overlayAudio.addEventListener('ended', handleOverlayEnded);
 
+    // User gesture detection for Safari autoplay
+    const handleUserGesture = () => {
+      setAudioState((prev) => ({ ...prev, hasUserInteracted: true }));
+      markUserGesture();
+    };
+
+    // Listen for user interactions that enable autoplay
+    const gestureEvents = ['click', 'touchend', 'keydown', 'mouseup', 'pointerup'];
+    gestureEvents.forEach(event => {
+      document.addEventListener(event, handleUserGesture, { once: true, passive: true });
+    });
+
     return () => {
       audio.removeEventListener('loadstart', handleLoadStart);
       audio.removeEventListener('canplay', handleCanPlay);
@@ -142,10 +168,15 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
 
       overlayAudio.removeEventListener('ended', handleOverlayEnded);
 
+      // Remove gesture event listeners
+      gestureEvents.forEach(event => {
+        document.removeEventListener(event, handleUserGesture);
+      });
+
       audio.pause();
       overlayAudio.pause();
     };
-  }, []);
+  }, [browserInfo.isSafari]);
 
   const playTrack = (src: string, id?: string, title?: string) => {
     const track: AudioTrack = {
@@ -169,10 +200,15 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
             .catch((err) => {
               console.error('Error resuming audio:', err);
               if (err.name === 'NotAllowedError') {
+                const errorMessage = browserInfo.isDesktopSafari 
+                  ? 'Safari autoplay blocked. Click anywhere to enable audio or check Safari > Settings > Websites > Auto-Play.'
+                  : browserInfo.isMobileSafari
+                  ? 'Mobile Safari requires interaction. Tap anywhere to enable audio.'
+                  : 'Autoplay blocked by browser. Click anywhere to enable audio.';
+                
                 setAudioState((prev) => ({
                   ...prev,
-                  error:
-                    'Autoplay blocked by browser. Click anywhere to enable audio.',
+                  error: errorMessage,
                 }));
               } else {
                 setAudioState((prev) => ({
@@ -202,10 +238,15 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
         .catch((err) => {
           console.error('Error playing audio:', err);
           if (err.name === 'NotAllowedError') {
+            const errorMessage = browserInfo.isDesktopSafari 
+              ? 'Safari autoplay blocked. Click anywhere to enable audio or check Safari > Settings > Websites > Auto-Play.'
+              : browserInfo.isMobileSafari
+              ? 'Mobile Safari requires interaction. Tap anywhere to enable audio.'
+              : 'Autoplay blocked by browser. Click anywhere to enable audio.';
+            
             setAudioState((prev) => ({
               ...prev,
-              error:
-                'Autoplay blocked by browser. Click anywhere to enable audio.',
+              error: errorMessage,
             }));
           } else {
             setAudioState((prev) => ({

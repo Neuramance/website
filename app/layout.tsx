@@ -8,8 +8,8 @@ import localFont from 'next/font/local';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Neuramance',
-    default: 'Neuramance',
+    template: '%s | Neuramance®',
+    default: 'Neuramance®',
   },
   description: 'Your Command Center For Everyday AI.',
   metadataBase: new URL('https://Neuramance.com'),
