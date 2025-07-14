@@ -1,7 +1,13 @@
 'use client';
 
 import { AudioEnabler } from '@/components/audio-enabler';
-import { Hero } from '@/components/hero';
+import dynamic from 'next/dynamic';
+
+// Lazy load Hero component to reduce initial bundle size
+const Hero = dynamic(() => import('@/components/hero').then(mod => ({ default: mod.Hero })), {
+  loading: () => <div className="flex h-screen w-full items-center justify-center">Loading...</div>,
+  ssr: true
+});
 
 export default function Page() {
   return (

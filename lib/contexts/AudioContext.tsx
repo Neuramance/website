@@ -76,8 +76,22 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
       overlayAudio.preload = 'auto';
     }
     
-    // Enable streaming for large audio files
+    // Enable streaming for large audio files with optimized buffering
     audio.crossOrigin = 'anonymous';
+    
+    // Optimize audio buffer for better memory usage
+    try {
+      // Set smaller buffer for overlay audio to reduce memory usage
+      if ('buffered' in overlayAudio && 'mozAudioBufferTime' in overlayAudio) {
+        (overlayAudio as any).mozAudioBufferTime = 0.1; // 100ms buffer for Firefox
+      }
+      if ('webkitAudioDecodedByteCount' in audio) {
+        // Optimize WebKit audio decoding for large files
+        audio.setAttribute('x-webkit-airplay', 'allow');
+      }
+    } catch (e) {
+      // Ignore if browser doesn't support these optimizations
+    }
     
     audioRef.current = audio;
     overlayAudioRef.current = overlayAudio;
@@ -177,8 +191,19 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
         document.removeEventListener(event, handleUserGesture);
       });
 
+      // Clean up audio resources to prevent memory leaks
       audio.pause();
       overlayAudio.pause();
+      
+      // Clear audio sources to free memory
+      try {
+        audio.src = '';
+        overlayAudio.src = '';
+        audio.load();
+        overlayAudio.load();
+      } catch (e) {
+        // Ignore cleanup errors
+      }
     };
   }, [browserInfo.isSafari]);
 

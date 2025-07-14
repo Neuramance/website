@@ -62,3 +62,37 @@ export interface BrowserInfo {
   isFirefox: boolean;
   version?: string;
 }
+
+// Common component base props
+export interface BaseComponentProps {
+  className?: string;
+  children?: React.ReactNode;
+  id?: string;
+  'data-testid'?: string;
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
+  'aria-describedby'?: string;
+}
+
+// Loading state interface
+export interface LoadingState {
+  isLoading: boolean;
+  error?: string | null;
+  message?: string;
+}
+
+// API response wrapper
+export interface ApiResponse<T = any> {
+  data?: T;
+  error?: string;
+  success: boolean;
+  message?: string;
+}
+
+// Common modal/dialog props
+export interface ModalProps extends BaseComponentProps {
+  isOpen: boolean;
+  onClose: () => void;
+  title?: string;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+}

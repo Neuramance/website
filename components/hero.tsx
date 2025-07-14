@@ -75,8 +75,9 @@ export const Hero = React.memo(() => {
                     variant="secondary"
                     className="gap-1"
                     disabled
+                    aria-label="User is already on the waitlist"
                   >
-                    <Check className="h-3 w-3" />
+                    <Check className="h-3 w-3" aria-hidden="true" />
                     Thank you very much for your interest. You are on the
                     Waitlist.
                   </Button>
@@ -86,8 +87,13 @@ export const Hero = React.memo(() => {
                     className="block"
                     onClick={handleSignupClick}
                   >
-                    <Button size="nav" variant="secondary" className="gap-1">
-                      <Plus className="h-3 w-3" />
+                    <Button 
+                      size="nav" 
+                      variant="secondary" 
+                      className="gap-1"
+                      aria-label="Sign up for Neuramance waitlist and beta access"
+                    >
+                      <Plus className="h-3 w-3" aria-hidden="true" />
                       Sign up for Waitlist / Beta
                     </Button>
                   </Link>

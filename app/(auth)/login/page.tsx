@@ -1,8 +1,13 @@
 import AuthNav from '@/components/auth-nav';
 import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 
-import { GoogleOAuthButton } from '@/components/auth';
+// Lazy load GoogleOAuthButton to reduce initial bundle size
+const GoogleOAuthButton = dynamic(() => import('@/components/auth').then(mod => ({ default: mod.GoogleOAuthButton })), {
+  loading: () => <div className="h-12 w-full rounded-lg bg-gray-200 animate-pulse" />,
+  ssr: false
+});
 
 export default async function Page() {
   return (

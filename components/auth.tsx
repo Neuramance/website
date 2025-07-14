@@ -43,9 +43,10 @@ export function EmailAuthForm({ title }: EmailAuthFormProps) {
             />
             <button
               type="submit"
-              className="flex h-12 items-center justify-center gap-3 rounded-lg border border-border bg-[#ededed] px-5 py-3.5 text-center text-base font-medium text-black hover:bg-[#cccccc]"
+              className="flex h-12 items-center justify-center gap-3 rounded-lg border border-border bg-[#ededed] px-5 py-3.5 text-center text-base font-medium text-black hover:bg-[#cccccc] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              aria-label="Continue with email login"
             >
-              <EnvelopeClosedIcon />
+              <EnvelopeClosedIcon aria-hidden="true" />
               Continue with Email
             </button>
           </form>
@@ -71,7 +72,8 @@ export function GoogleOAuthButton() {
   return (
     <button
       onClick={async () => await loginWithGoogle()}
-      className="flex h-12 items-center justify-center rounded-lg bg-blue-500 px-5 py-3.5 text-center text-base font-medium text-white hover:bg-blue-600"
+      className="flex h-12 items-center justify-center rounded-lg bg-blue-500 px-5 py-3.5 text-center text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2"
+      aria-label="Continue with Google OAuth"
     >
       <svg
         className="pr-3"
@@ -81,6 +83,7 @@ export function GoogleOAuthButton() {
         role="img"
         focusable="false"
         aria-hidden="true"
+        aria-label="Google logo"
       >
         <path d="M14.9933 8.27504C14.9933 7.68802 14.9456 7.25966 14.8426 6.81543H8.1394V9.46493H12.074C11.9947 10.1234 11.5663 11.115 10.6144 11.7813L10.6011 11.87L12.7205 13.5119L12.8673 13.5265C14.2158 12.2811 14.9933 10.4486 14.9933 8.27504Z"></path>
         <path d="M8.1394 15.2557C10.067 15.2557 11.6853 14.6211 12.8673 13.5264L10.6144 11.7812C10.0115 12.2016 9.20237 12.4951 8.1394 12.4951C6.25143 12.4951 4.64903 11.2497 4.07782 9.52832L3.99409 9.53543L1.79029 11.241L1.76147 11.3211C2.93551 13.6533 5.34706 15.2557 8.1394 15.2557Z"></path>
