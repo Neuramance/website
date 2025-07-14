@@ -1,5 +1,6 @@
 'use client';
 import { createClient } from '@/lib/supabase/client';
+import { logError } from '@/lib/utils/logger';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
@@ -14,12 +15,12 @@ export default function Avatar({
   size: number;
   onUpload: (url: string) => void;
 }) {
-  const supabase = createClient();
   const [avatarUrl, setAvatarUrl] = useState<string | null>(url);
   const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
     async function downloadImage(path: string) {
+      const supabase = createClient();
       try {
         const { data, error } = await supabase.storage
           .from('avatars')
@@ -31,12 +32,12 @@ export default function Avatar({
         const url = URL.createObjectURL(data);
         setAvatarUrl(url);
       } catch (error) {
-        console.log('Error downloading image: ', error);
+        logError('Error downloading image', error, 'Avatar');
       }
     }
 
     if (url) downloadImage(url);
-  }, [url, supabase]);
+  }, [url]);
 
   const uploadAvatar: React.ChangeEventHandler<HTMLInputElement> = async (
     event,
@@ -52,6 +53,7 @@ export default function Avatar({
       const fileExt = file.name.split('.').pop();
       const filePath = `${uid}-${Math.random()}.${fileExt}`;
 
+      const supabase = createClient();
       const { error: uploadError } = await supabase.storage
         .from('avatars')
         .upload(filePath, file);

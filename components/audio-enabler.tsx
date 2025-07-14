@@ -1,9 +1,9 @@
 'use client';
 
+import React, { useEffect, useState, useCallback } from 'react';
 import { useGlobalAudio } from '@/lib/contexts/AudioContext';
-import { useEffect, useState } from 'react';
 
-export function AudioEnabler() {
+export const AudioEnabler = React.memo(() => {
   const {
     playTrack,
     error,
@@ -60,7 +60,7 @@ export function AudioEnabler() {
     }
   }, [error, isPlaying, currentTrack]);
 
-  const handleEnableAudio = () => {
+  const handleEnableAudio = useCallback(() => {
     setShowOverlay(false);
     setRetryCount((prev) => prev + 1);
 
@@ -80,7 +80,7 @@ export function AudioEnabler() {
         'Background Music',
       );
     }
-  };
+  }, [browserInfo.isSafari, playTrack]);
 
   // Auto-retry logic for Safari if audio still fails after user interaction
   useEffect(() => {
@@ -155,4 +155,6 @@ export function AudioEnabler() {
       </div>
     </div>
   );
-}
+});
+
+AudioEnabler.displayName = 'AudioEnabler';

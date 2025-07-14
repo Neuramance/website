@@ -11,30 +11,35 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { logoutCurrentUser } from '@/lib/auth/actions';
 import { createClient } from '@/lib/supabase/client';
+import { logError } from '@/lib/utils/logger';
 import { User } from '@supabase/supabase-js';
 import { BadgePlus, LogOut, Settings } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
+interface ProfileData {
+  full_name: string | null;
+  avatar_url: string | null;
+}
+
 export default function AccountDropdownMenu({ user }: { user: User }) {
   const [full_name, setFullName] = useState<string | null>(null);
   const [avatar_url, setAvatarUrl] = useState<string | null>(null);
   const [avatar_blob_url, setAvatarBlobUrl] = useState<string | null>(null);
 
-  const supabase = createClient();
-
   useEffect(() => {
+    const supabase = createClient();
     async function downloadProfile() {
       try {
         const { data, error, status } = await supabase
           .from('profiles')
           .select(`full_name, avatar_url`)
           .eq('id', user?.id)
-          .single();
+          .single() as { data: ProfileData | null; error: any; status: number };
 
         if (error && status !== 406) {
-          console.log(error);
+          logError('Error loading profile', error, 'AccountDropdown');
           throw error;
         }
 
@@ -48,10 +53,11 @@ export default function AccountDropdownMenu({ user }: { user: User }) {
       }
     }
     if (user.id) downloadProfile();
-  }, [user.id, supabase]);
+  }, [user.id]);
 
   useEffect(() => {
     async function downloadImage(path: string) {
+      const supabase = createClient();
       try {
         const { data, error } = await supabase.storage
           .from('avatars')
@@ -64,12 +70,12 @@ export default function AccountDropdownMenu({ user }: { user: User }) {
         const url = URL.createObjectURL(data);
         setAvatarBlobUrl(url);
       } catch (error) {
-        console.log('Error downloading image: ', error);
+        logError('Error downloading avatar image', error, 'AccountDropdown');
       }
     }
 
     if (avatar_url) downloadImage(avatar_url);
-  }, [avatar_url, supabase]);
+  }, [avatar_url]);
 
   return (
     <DropdownMenu>

@@ -1,8 +1,9 @@
 'use client';
 
+import React from 'react';
 import { useGlitch } from 'react-powerglitch';
 
-export default function GlitchWordmark() {
+const GlitchWordmark = React.memo(() => {
   const glitch = useGlitch({
     timing: {
       duration: 3000, // Animation lasts 3 seconds
@@ -26,4 +27,8 @@ export default function GlitchWordmark() {
       </h1>
     </div>
   );
-}
+});
+
+GlitchWordmark.displayName = 'GlitchWordmark';
+
+export default GlitchWordmark;

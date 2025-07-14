@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { logError } from '@/lib/utils/logger';
 
 interface UseAudioReturn {
   play: () => void;
@@ -58,7 +59,7 @@ export function useAudio(src: string): UseAudioReturn {
       audioRef.current.play()
         .then(() => setIsPlaying(true))
         .catch((err) => {
-          console.error('Error playing audio:', err);
+          logError('Error playing audio', err, 'useAudio');
           setError('Failed to play audio');
         });
     }

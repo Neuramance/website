@@ -9,12 +9,8 @@ import React, {
 } from 'react';
 
 import { detectBrowser, markUserGesture, type BrowserInfo } from '@/lib/utils/browser-detection';
-
-interface AudioTrack {
-  id: string;
-  src: string;
-  title?: string;
-}
+import { logError } from '@/lib/utils/logger';
+import { AudioTrack } from '@/lib/types/components';
 
 interface AudioState {
   currentTrack: AudioTrack | null;
@@ -69,11 +65,19 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     const audio = new Audio();
     const overlayAudio = new Audio();
     
-    // Safari-specific audio optimization
+    // Optimized preload strategy for large files
     if (browserInfo.isSafari) {
-      audio.preload = 'auto';
+      // Safari: preload metadata only for large files, auto for small ones
+      audio.preload = 'metadata'; // Changed from 'auto' for better performance
+      overlayAudio.preload = 'auto'; // Keep auto for small overlay files
+    } else {
+      // Other browsers: use metadata preload for main audio, auto for overlays
+      audio.preload = 'metadata';
       overlayAudio.preload = 'auto';
     }
+    
+    // Enable streaming for large audio files
+    audio.crossOrigin = 'anonymous';
     
     audioRef.current = audio;
     overlayAudioRef.current = overlayAudio;
@@ -129,7 +133,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
                 isPausedForOverlay: false,
               }));
             })
-            .catch(console.error);
+            .catch((err) => logError('Failed to resume background audio after overlay', err, 'AudioContext'));
         }
         return prev;
       });
@@ -198,7 +202,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
               setAudioState((prev) => ({ ...prev, isPlaying: true }));
             })
             .catch((err) => {
-              console.error('Error resuming audio:', err);
+              logError('Error resuming audio', err, 'AudioContext');
               if (err.name === 'NotAllowedError') {
                 const errorMessage = browserInfo.isDesktopSafari 
                   ? 'Safari autoplay blocked. Click anywhere to enable audio or check Safari > Settings > Websites > Auto-Play.'
@@ -236,7 +240,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
           setAudioState((prev) => ({ ...prev, isPlaying: true }));
         })
         .catch((err) => {
-          console.error('Error playing audio:', err);
+          logError('Error playing audio', err, 'AudioContext');
           if (err.name === 'NotAllowedError') {
             const errorMessage = browserInfo.isDesktopSafari 
               ? 'Safari autoplay blocked. Click anywhere to enable audio or check Safari > Settings > Websites > Auto-Play.'
@@ -274,7 +278,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
       overlayAudioRef.current.src = src;
       overlayAudioRef.current.load();
       overlayAudioRef.current.play().catch((err) => {
-        console.error('Error playing overlay audio:', err);
+        logError('Error playing overlay audio', err, 'AudioContext');
         // If overlay fails, resume background
         if (audioState.isPausedForOverlay && audioRef.current) {
           audioRef.current
@@ -286,7 +290,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
                 isPausedForOverlay: false,
               }));
             })
-            .catch(console.error);
+            .catch((err) => logError('Failed to resume background audio after overlay', err, 'AudioContext'));
         }
       });
     }
@@ -302,7 +306,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
           setAudioState((prev) => ({ ...prev, isPlaying: true }));
         })
         .catch((err) => {
-          console.error('Error playing audio:', err);
+          logError('Error playing audio', err, 'AudioContext');
           setAudioState((prev) => ({ ...prev, error: 'Failed to play audio' }));
         });
     }
@@ -331,7 +335,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
           setAudioState((prev) => ({ ...prev, isPlaying: true }));
         })
         .catch((err) => {
-          console.error('Error resuming audio:', err);
+          logError('Error resuming audio', err, 'AudioContext');
           setAudioState((prev) => ({
             ...prev,
             error: 'Failed to resume audio',

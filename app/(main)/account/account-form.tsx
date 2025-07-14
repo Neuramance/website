@@ -21,10 +21,16 @@ import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { logError } from '@/lib/utils/logger';
 
 import { createClient } from '@/lib/supabase/client';
 import { type User } from '@supabase/supabase-js';
 import { useCallback, useEffect, useState } from 'react';
+
+interface ProfileData {
+  full_name: string | null;
+  avatar_url: string | null;
+}
 
 const formSchema = z.object({
   full_name: z
@@ -55,23 +61,25 @@ export default function AccountForm({ user }: { user: User | null }) {
     });
   }
 
-  const supabase = createClient();
   const [loading, setLoading] = useState(true);
   const [full_name, setFullName] = useState<string | null>(null);
   const [avatar_url, setAvatarUrl] = useState<string | null>(null);
 
   const getProfile = useCallback(async () => {
+    if (!user?.id) return;
+    
+    const supabase = createClient();
     try {
       setLoading(true);
 
       const { data, error, status } = await supabase
         .from('profiles')
         .select(`full_name, avatar_url`)
-        .eq('id', user?.id)
-        .single();
+        .eq('id', user.id)
+        .single() as { data: ProfileData | null; error: any; status: number };
 
       if (error && status !== 406) {
-        console.log(error);
+        logError('Error loading profile data', error, 'AccountForm');
         throw error;
       }
 
@@ -84,7 +92,7 @@ export default function AccountForm({ user }: { user: User | null }) {
     } finally {
       setLoading(false);
     }
-  }, [user, supabase]);
+  }, [user]);
 
   useEffect(() => {
     getProfile();
@@ -97,6 +105,9 @@ export default function AccountForm({ user }: { user: User | null }) {
   }, [full_name, form]);
 
   async function updateProfile({ full_name }: { full_name: string | null }) {
+    if (!user?.id) return;
+    
+    const supabase = createClient();
     try {
       setLoading(true);
 
@@ -106,7 +117,7 @@ export default function AccountForm({ user }: { user: User | null }) {
           full_name: full_name,
           updated_at: new Date().toISOString(),
         })
-        .eq('id', user?.id);
+        .eq('id', user.id);
       if (error) throw error;
     } catch (error) {
       alert('Error updating profile!');
@@ -116,6 +127,9 @@ export default function AccountForm({ user }: { user: User | null }) {
   }
 
   async function updateAvatar({ avatar_url }: { avatar_url: string | null }) {
+    if (!user?.id) return;
+    
+    const supabase = createClient();
     try {
       setLoading(true);
 
@@ -125,7 +139,7 @@ export default function AccountForm({ user }: { user: User | null }) {
           avatar_url: avatar_url,
           updated_at: new Date().toISOString(),
         })
-        .eq('id', user?.id);
+        .eq('id', user.id);
       if (error) throw error;
     } catch (error) {
       alert('Error updating avatar!');
