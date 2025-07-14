@@ -17,10 +17,19 @@ export async function updateSession(request: NextRequest) {
           return request.cookies.get(name)?.value;
         },
         set(name: string, value: string, options: CookieOptions) {
+          // Enhanced cookie security
+          const secureOptions: CookieOptions = {
+            ...options,
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'lax',
+            path: '/',
+          };
+          
           request.cookies.set({
             name,
             value,
-            ...options,
+            ...secureOptions,
           });
           response = NextResponse.next({
             request: {
@@ -30,14 +39,22 @@ export async function updateSession(request: NextRequest) {
           response.cookies.set({
             name,
             value,
-            ...options,
+            ...secureOptions,
           });
         },
         remove(name: string, options: CookieOptions) {
+          const secureOptions: CookieOptions = {
+            ...options,
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'lax',
+            path: '/',
+          };
+          
           request.cookies.set({
             name,
             value: '',
-            ...options,
+            ...secureOptions,
           });
           response = NextResponse.next({
             request: {
@@ -47,7 +64,7 @@ export async function updateSession(request: NextRequest) {
           response.cookies.set({
             name,
             value: '',
-            ...options,
+            ...secureOptions,
           });
         },
       },
@@ -56,6 +73,30 @@ export async function updateSession(request: NextRequest) {
 
   // refreshing the auth token
   await supabase.auth.getUser();
+
+  // Add security headers
+  response.headers.set('X-Frame-Options', 'DENY');
+  response.headers.set('X-Content-Type-Options', 'nosniff');
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  response.headers.set('X-XSS-Protection', '1; mode=block');
+  
+  // Add CSP header for better security
+  const cspHeader = [
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval'", // Needed for Next.js and analytics
+    "style-src 'self' 'unsafe-inline'", // Needed for Tailwind CSS
+    "img-src 'self' data: blob: https:",
+    "font-src 'self' data:",
+    "connect-src 'self' https://*.supabase.co wss://*.supabase.co",
+    "media-src 'self'",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'none'",
+    "upgrade-insecure-requests"
+  ].join('; ');
+  
+  response.headers.set('Content-Security-Policy', cspHeader);
 
   return response;
 }

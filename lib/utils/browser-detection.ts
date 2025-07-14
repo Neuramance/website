@@ -64,19 +64,27 @@ export function detectBrowser(): BrowserInfo {
   };
 }
 
+// Extend Window interface for type safety
+declare global {
+  interface Window {
+    __audioUserGestureDetected?: boolean;
+    webkitAudioContext?: typeof AudioContext;
+  }
+}
+
 /**
  * Checks if a user gesture has occurred recently
  */
 export function hasRecentUserGesture(): boolean {
   // This will be set by event listeners in the AudioContext
-  return (window as any).__audioUserGestureDetected || false;
+  return window.__audioUserGestureDetected || false;
 }
 
 /**
  * Marks that a user gesture has occurred
  */
 export function markUserGesture(): void {
-  (window as any).__audioUserGestureDetected = true;
+  window.__audioUserGestureDetected = true;
 }
 
 /**
@@ -84,13 +92,13 @@ export function markUserGesture(): void {
  */
 export function canPlayAudio(): Promise<boolean> {
   return new Promise((resolve) => {
-    if (!window.AudioContext && !(window as any).webkitAudioContext) {
+    if (!window.AudioContext && !window.webkitAudioContext) {
       resolve(false);
       return;
     }
 
     try {
-      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
       const testContext = new AudioContextClass();
       
       if (testContext.state === 'suspended') {

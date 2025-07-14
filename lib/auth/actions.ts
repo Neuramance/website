@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation';
 
 import { createClient } from '@/lib/supabase/server';
+import { logError } from '@/lib/utils/logger';
 
 export async function loginWithGoogle() {
   const supabase = createClient();
@@ -18,7 +19,7 @@ export async function loginWithGoogle() {
   });
 
   if (error) {
-    console.log(error);
+    logError('Google OAuth login failed', error, 'auth');
     redirect('/error');
   }
 
@@ -45,7 +46,7 @@ export async function loginWithMagicLink(formData: FormData) {
   });
 
   if (error) {
-    console.log(error);
+    logError('Google OAuth login failed', error, 'auth');
     redirect('/error');
   }
 }
@@ -54,7 +55,7 @@ export async function logoutCurrentUser() {
   const supabase = createClient();
   const { error } = await supabase.auth.signOut();
   if (error) {
-    console.error('Logout failed:', error);
+    logError('Logout failed', error, 'auth');
   } else {
     redirect('/login');
   }

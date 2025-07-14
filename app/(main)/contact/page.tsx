@@ -1,6 +1,7 @@
 'use client';
 
 import { useGlobalAudio } from '@/lib/contexts/AudioContext';
+import { logWarning } from '@/lib/utils/logger';
 import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 
 export default function Page() {
@@ -10,9 +11,7 @@ export default function Page() {
     try {
       playOverlayTrack('/audio/dune2-intro.mp3', 'dune2-quote', 'Dune 2 Quote');
     } catch (error) {
-      console.warn(
-        'Dune 2 audio file not found. Please add dune2-intro.mp3 to /public/audio/',
-      );
+      logWarning('Dune 2 audio file not found. Please add dune2-intro.mp3 to /public/audio/', 'ContactPage');
     }
   };
 
@@ -20,9 +19,7 @@ export default function Page() {
     try {
       playOverlayTrack('/audio/got-mail.mp3', 'got-mail', 'Got Mail Sound');
     } catch (error) {
-      console.warn(
-        'Got mail audio file not found. Please add got-mail.mp3 to /public/audio/',
-      );
+      logWarning('Got mail audio file not found. Please add got-mail.mp3 to /public/audio/', 'ContactPage');
     }
   };
   return (
