@@ -4,11 +4,10 @@ import { createClient } from '@/lib/supabase/client';
 import { User } from '@supabase/supabase-js';
 import { Check, Plus } from 'lucide-react';
 import Link from 'next/link';
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { useGlobalAudio } from '@/lib/contexts/AudioContext';
 import { logWarning } from '@/lib/utils/logger';
-import { IconProps } from '@/lib/types/components';
 import { Button } from './ui/button';
 import GlitchWordmark from './ui/glitch-wordmark';
 import { Icons } from './ui/icons';
@@ -79,7 +78,7 @@ export const Hero = React.memo(() => {
                   >
                     <Check className="h-3 w-3" aria-hidden="true" />
                     Thank you very much for your interest. You are on the
-                    Waitlist.
+                    waitlist.
                   </Button>
                 ) : (
                   <Link
