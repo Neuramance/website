@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import '@/styles/global.css';
 import { Metadata } from 'next';
 import localFont from 'next/font/local';
+import { GeistMono } from 'geist/font/mono';
 
 export const metadata: Metadata = {
   title: {
@@ -62,12 +63,8 @@ const fontSans = localFont({
   preload: true,
 });
 
-const fontMono = localFont({
-  src: '../lib/fonts/InterVariable.woff2', // Use Inter for mono too to reduce bundle
-  display: 'swap', 
-  variable: '--font-mono',
-  preload: true,
-});
+// Keep Inter for general sans-serif text
+// Use Geist Mono for monospace text (as it was before)
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -114,7 +111,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         className={cn(
           'min-h-screen font-sans antialiased',
           fontSans.variable,
-          fontMono.variable,
+          GeistMono.variable,
         )}
       >
         <ErrorBoundary>
