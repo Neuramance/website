@@ -29,7 +29,7 @@ export default function Page() {
           <div className="space-y-6">
             <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
               CONTACT US : <br></br>Reach out about questions, partnerships, or
-              anything else.<br></br>No time wasting, please.
+              anything else.
             </h1>
             <div
               className="-mt-[75px] flex h-[200px] w-[300px] items-start justify-start hover:cursor-pointer"
