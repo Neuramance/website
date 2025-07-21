@@ -42,7 +42,7 @@ export default function Page() {
               <div className="mt-[75px] flex items-center space-x-2">
                 <EnvelopeClosedIcon className="h-3 w-3" />
                 <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-                  wires@neuramance.com
+                  austin@neuramance.com
                 </span>
               </div>
             </div>

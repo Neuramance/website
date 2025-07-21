@@ -31,7 +31,7 @@ const GlitchWordmark = React.memo(() => {
       }}
     >
       <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-sm tracking-tight text-transparent sm:text-sm sm:leading-tight xl:text-sm/none xl:leading-tight">
-        NEURAMANCE® CYBERSYSTEMS INC.
+        NEURAMANCE® CYBERSYSTEMS CORP.
       </h1>
     </div>
   );

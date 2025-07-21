@@ -60,7 +60,7 @@ export const Hero = React.memo(() => {
             <GlitchWordmark />
             <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
               PRODUCT 01 : Neuramance DeepStrategy™
-              <br></br>Superintelligent Optimization of Processes, Operations, & Growth Plans.
+              <br></br>Superintelligent Optimization & Improvement of Processes, Operations, Strategic Plans, & Growth Campaigns.
             </h1>
             <div className="flex flex-col items-start">
               <div className="flex flex-col items-center">
