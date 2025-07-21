@@ -40,26 +40,20 @@ export const Hero = React.memo(() => {
     }
   }, [playOverlayTrack]);
 
-  const handleSignupClick = useCallback(() => {
-    try {
-      playOverlayTrack(
-        '/audio/360noscope.mp3',
-        '360noscope',
-        '360 No Scope Sound',
-      );
-    } catch (error) {
-      logWarning('360noscope audio file not found. Please add 360noscope.mp3 to /public/audio/', 'Hero');
-    }
-  }, [playOverlayTrack]);
 
   return (
     <section className="relative flex h-screen w-full items-center bg-background py-12 md:py-24 lg:py-32 xl:py-48">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col justify-start space-y-8 text-left">
           <div className="space-y-4">
-            <GlitchWordmark />
+            <div>
+              <GlitchWordmark />
+              <div className="ss-disambiguation font-mono text-xs tracking-tight text-white">
+                Software From The Future.
+              </div>
+            </div>
             <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-              PRODUCT 01 : Neuramance DeepStrategy™
+              Product 01 : Neuramance DeepStrategy™
               <br></br>Superintelligent Optimization & Improvement of Processes, Operations, Strategic Plans, & Growth Campaigns.
             </h1>
             <div className="flex flex-col items-start">
@@ -82,7 +76,6 @@ export const Hero = React.memo(() => {
                   <Link
                     href="/signup"
                     className="block"
-                    onClick={handleSignupClick}
                   >
                     <Button 
                       size="nav" 
