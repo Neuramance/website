@@ -48,7 +48,7 @@ export const Hero = React.memo(() => {
           <div className="space-y-4">
             <div>
               <GlitchWordmark />
-              <div className="ss-disambiguation font-mono text-xs tracking-tight text-white">
+              <div className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent">
                 Software From The Future.
               </div>
             </div>

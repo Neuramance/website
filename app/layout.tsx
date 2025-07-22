@@ -3,17 +3,17 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { AudioProvider } from '@/lib/contexts/AudioContext';
 import { cn } from '@/lib/utils';
 import '@/styles/global.css';
+import { GeistMono } from 'geist/font/mono';
 import { Metadata } from 'next';
 import localFont from 'next/font/local';
-import { GeistMono } from 'geist/font/mono';
 
 export const metadata: Metadata = {
   title: {
     template: '%s | Neuramance®',
-    default: 'Neuramance® - Your Command Center For Everyday AI',
+    default: 'Neuramance® - Official Website',
   },
-  description: 'Neuramance is your command center for everyday AI. Experience turbocognition, hyperanalysis, and superenjoyment of multimedia, literature, and markets.',
-  keywords: ['AI', 'artificial intelligence', 'command center', 'turbocognition', 'hyperanalysis', 'multimedia', 'automation'],
+  description: 'Neuramance builds software from the future: superintelligent optimization & improvement of processes, operations, strategic plans, & growth campaigns.',
+  keywords: ['AI', 'artificial intelligence', 'process optimization', 'turbocognition', 'hyperanalysis', 'multimedia', 'operations', 'productivity'],
   authors: [{ name: 'Neuramance' }],
   creator: 'Neuramance',
   publisher: 'Neuramance',
@@ -26,21 +26,21 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://neuramance.com',
     siteName: 'Neuramance',
-    title: 'Neuramance® - Your Command Center For Everyday AI',
-    description: 'Experience turbocognition, hyperanalysis, and superenjoyment of multimedia, literature, and markets.',
+    title: 'Neuramance® - Software From the Future',
+    description: 'Superintelligent Optimization & Improvement of Processes, Operations, Strategic Plans, & Growth Campaigns.',
     images: [
       {
         url: '/opengraph-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Neuramance - Your Command Center For Everyday AI',
+        alt: 'Neuramance - Software From the Future',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Neuramance® - Your Command Center For Everyday AI',
-    description: 'Experience turbocognition, hyperanalysis, and superenjoyment of multimedia, literature, and markets.',
+    title: 'Neuramance® - Software From the Future',
+    description: 'Superintelligent Optimization & Improvement of Processes, Operations, Strategic Plans, & Growth Campaigns.',
     images: ['/opengraph-image.jpg'],
   },
   robots: {
@@ -72,8 +72,8 @@ const structuredData = {
   "name": "Neuramance",
   "url": "https://neuramance.com",
   "logo": "https://neuramance.com/opengraph-image.jpg",
-  "description": "Your command center for everyday AI. Experience turbocognition, hyperanalysis, and superenjoyment of multimedia, literature, and markets.",
-  "foundingDate": "2024",
+  "description": "Software From the Future. Superintelligent Optimization & Improvement of Processes, Operations, Strategic Plans, & Growth Campaigns.",
+  "foundingDate": "2025",
   "sameAs": [
     "https://twitter.com/neuramance",
     "https://github.com/neuramance"
@@ -85,8 +85,8 @@ const structuredData = {
   },
   "offers": {
     "@type": "Offer",
-    "name": "AI Command Center Access",
-    "description": "Access to Neuramance AI platform for turbocognition and hyperanalysis",
+    "name": "Software From the Future",
+    "description": "Access to Neuramance AI platform for superintelligent process & productivity optimization.",
     "category": "Software"
   }
 };
