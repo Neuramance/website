@@ -39,6 +39,8 @@ Central audio management system with sophisticated browser compatibility:
 - **Browser Detection**: Safari-specific handling in `lib/utils/browser-detection.ts`
 - **Memory Management**: Optimized buffering and cleanup to prevent memory leaks
 - **Autoplay Handling**: Graceful degradation for browser autoplay policies
+- **Performance Optimization**: Audio optimization utilities in `lib/utils/audio-optimization.ts`
+- **Context Management**: Multiple audio context files for complex state scenarios
 
 ### Component Architecture
 - **UI Components**: Radix UI + Tailwind CSS in `components/ui/`
@@ -49,7 +51,7 @@ Central audio management system with sophisticated browser compatibility:
 ### Styling & Typography
 - **Fonts**: Inter Variable (sans-serif) + Geist Mono (monospace)
 - **Tailwind**: Custom design system with CSS variables
-- **Font Features**: Stylistic sets configured (ss-disambiguation, etc.)
+- **Font Features**: OpenType features via tailwindcss-opentype plugin
 
 ### Performance Optimizations
 - **Bundle Splitting**: Dynamic imports for route-based and component-based splitting
@@ -60,6 +62,29 @@ Central audio management system with sophisticated browser compatibility:
 ## Environment Requirements
 
 **Node.js**: >= 18.17.0 (see package.json engines)
+
+## Key Dependencies
+
+### Core Framework
+- **Next.js**: 14.2.30 with App Router
+- **React**: 18.2.0 with Server Components
+- **TypeScript**: 5.2.2 for type safety
+
+### Database & Authentication
+- **Supabase**: Primary authentication and database (@supabase/supabase-js, @supabase/ssr)
+- **Vercel Postgres**: Additional database integration (@vercel/postgres)
+- **NextAuth**: Alternative/additional auth system (next-auth)
+
+### UI & Styling
+- **Radix UI**: Comprehensive component library with theming (@radix-ui/themes)
+- **Tailwind CSS**: 4.1.10 with animations and OpenType features
+- **Lucide React**: Icon system
+- **React PowerGlitch**: Visual effects for enhanced UI
+
+### Development Tools
+- **React Hook Form**: Form handling with Zod validation
+- **Class Variance Authority**: Component variant management
+- **Geist Font**: Typography system
 
 ## Key File Patterns
 
@@ -82,6 +107,8 @@ Central audio management system with sophisticated browser compatibility:
 - URL validation for redirect prevention in auth flows
 - CSP headers and security policies in next.config.js
 - Production console log removal while preserving errors/warnings
+- Comprehensive logging system via `lib/utils/logger.ts`
+- Secure authentication flow handling with multiple providers
 
 ## Audio Implementation Notes
 
@@ -93,6 +120,19 @@ The audio system is complex and handles:
 
 When working with audio components, always test across browsers, especially Safari.
 
-## Database Seeding
+## Development Tools & Utilities
 
-Use `bun run seed` to populate the database (requires proper environment variables).
+### Logging System
+- **Production Logger**: `lib/utils/logger.ts` provides structured logging
+- **Audio Optimization**: `lib/utils/audio-optimization.ts` for performance monitoring
+- **Browser Detection**: Enhanced Safari compatibility handling
+
+### Development Directories
+- `docs/optimizations/` - Performance and optimization documentation
+- `lib/hooks/` - Custom React hooks for shared functionality
+- `components/dev/` - Development-only components and utilities
+
+### Custom Hooks
+- Audio management hooks for global state
+- Form validation and submission hooks
+- Browser compatibility detection hooks
