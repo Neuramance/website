@@ -28,7 +28,7 @@ export default function Page() {
         <div className="flex flex-col justify-start space-y-8 text-left">
           <div className="space-y-6">
             <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-              CONTACT US : <br></br>Reach out about questions, partnerships, or
+              Contact Us : <br></br>Reach out about questions, partnerships, or
               anything else.
             </h1>
             <div

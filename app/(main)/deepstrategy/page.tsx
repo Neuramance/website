@@ -32,7 +32,7 @@ export default function Page() {
             >
               <div className="mt-[75px] flex items-center space-x-2">
                 <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-                  Strategic thinking for the future of business & productivity.
+                  WIP.
                 </span>
               </div>
             </div>
