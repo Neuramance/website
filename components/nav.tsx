@@ -4,6 +4,7 @@ import HomeNavMenu from './home-nav-menu';
 import GlitchWordmark from './ui/glitch-wordmark';
 import { Button } from './ui/button';
 import { LogIn, Send } from 'lucide-react';
+import { HandIcon } from '@radix-ui/react-icons';
 
 
 
@@ -17,6 +18,15 @@ export default function HomepageNav() {
               Contact
             </Button>
           </Link>
+
+        <div className="absolute left-1/2 -translate-x-1/2 transform">
+          <Link href="/deepstrategy">
+            <Button size="nav" variant="secondary" className="gap-1">
+              <HandIcon className="h-[8px] w-[10px]" />
+              DeepStrategy<sup className="ml-[-3px] text-[8px] leading-none align-[0.1em]">1</sup>
+            </Button>
+          </Link>
+        </div>
 
         <AccountBlock />
       </div>
