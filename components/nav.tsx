@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import AccountBlock from './account-block';
 import HomeNavMenu from './home-nav-menu';
+import MobileNavMenu from './mobile-nav-menu';
 import GlitchWordmark from './ui/glitch-wordmark';
 import { Button } from './ui/button';
 import { LogIn, Send, Circle } from 'lucide-react';
@@ -25,13 +26,14 @@ export default function HomepageNav() {
               Contact
             </Button>
           </Link>
+          <MobileNavMenu />
         </div>
 
-        <div className="absolute left-1/2 -translate-x-1/2 transform">
+        <div className="absolute left-1/2 -translate-x-1/2 transform hidden md:block">
           <Link href="/deepstrategy">
             <Button size="nav" variant="secondary" className="gap-1 font-mono">
               <DashboardIcon className="h-[8px] w-[10px]" />
-              DeepStrategy<sup className="ml-[-3px] text-[8px] leading-none align-[0.1em]">1</sup>
+              DeepStrategy<sup className="ml-[-3px] text-[8px] leading-none relative top-[-2px]">1</sup>
             </Button>
           </Link>
         </div>
