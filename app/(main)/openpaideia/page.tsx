@@ -20,7 +20,7 @@ export default function Page() {
         <div className="flex flex-col justify-start space-y-8 text-left">
           <div className="space-y-6">
             <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-              Neuramance OpenPaideia™ : <br></br>Open-Source Community for Lifelong Learning & Development.
+              Neuramance OpenPaideia™ : <br></br>Open-Source Supplementary Education & Community for Valuable Lifelong Learning & Development.
             </h1>
             <div
               className="-mt-[75px] flex h-[200px] w-[600px] items-start justify-start hover:cursor-pointer"
@@ -32,7 +32,7 @@ export default function Page() {
             >
               <div className="mt-[75px] flex items-center space-x-2">
                 <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-                  Currently in research alpha.
+                  Currently in planning.
                 </span>
               </div>
             </div>
@@ -47,7 +47,7 @@ export default function Page() {
         onKeyDown={(e) => e.key === 'Enter' && handleOpenPaideiaClick()}
         aria-label="Play openpaideia audio"
       >
-        Knowledge shared is wisdom multiplied.
+        Humanity&apos;s greatest library isn&apos;t a collection of books, but a community of minds.
       </h1>
     </section>
   );

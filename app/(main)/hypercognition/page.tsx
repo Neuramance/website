@@ -20,7 +20,7 @@ export default function Page() {
         <div className="flex flex-col justify-start space-y-8 text-left">
           <div className="space-y-6">
             <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-              Neuramance HyperCognition™ : <br></br>AI-Powered Cognitive Enhancement.
+              Neuramance HyperCognition™ : <br></br>Acceleration & Enhancement of Comprehensive Learning & Deep Understanding.
             </h1>
             <div
               className="-mt-[75px] flex h-[200px] w-[600px] items-start justify-start hover:cursor-pointer"
@@ -47,7 +47,7 @@ export default function Page() {
         onKeyDown={(e) => e.key === 'Enter' && handleHyperCognitionClick()}
         aria-label="Play hypercognition audio"
       >
-        Intelligence amplified, decisions refined.
+        The greatest power isn&apos;t knowledge, but the rate at which you integrate it.
       </h1>
     </section>
   );
