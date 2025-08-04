@@ -49,7 +49,7 @@ export const Hero = React.memo(() => {
             <div>
               <GlitchWordmark />
               <div className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent">
-                Software From The Future.
+                Software From The Future for Eudaimonia.
               </div>
             </div>
             <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
