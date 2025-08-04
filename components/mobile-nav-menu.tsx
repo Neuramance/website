@@ -36,9 +36,8 @@ export default function MobileNavMenu() {
   }, []);
 
   const handleOpenChange = (open: boolean) => {
-    // If this is a click-triggered change and we're on a hover device,
-    // don't interfere with hover logic
-    if (!isHoverTriggered) {
+    // Allow click interactions on non-hover devices or when not hover-triggered
+    if (!supportsHover || !isHoverTriggered) {
       setIsOpen(open);
     }
   };
@@ -93,7 +92,7 @@ export default function MobileNavMenu() {
           ref={buttonRef}
           size="nav" 
           variant="secondary" 
-          className="gap-1 font-mono lg:hidden"
+          className="gap-1 font-mono lg:hidden cursor-pointer"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
@@ -103,7 +102,7 @@ export default function MobileNavMenu() {
       </DropdownMenuTrigger>
       <DropdownMenuContent 
         ref={contentRef}
-        className={`min-w-40 ${isHoverTriggered ? 'animate-in fade-in-0 zoom-in-95 duration-200' : ''}`}
+        className="min-w-40"
         align="end"
         sideOffset={8}
         onMouseEnter={handleContentMouseEnter}

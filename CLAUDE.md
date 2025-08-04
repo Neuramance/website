@@ -136,3 +136,49 @@ When working with audio components, always test across browsers, especially Safa
 - Audio management hooks for global state
 - Form validation and submission hooks
 - Browser compatibility detection hooks
+
+## Environment Setup
+
+### Using Vercel CLI for Environment Variables
+
+For local development, use the Vercel CLI to sync environment variables:
+
+1. **Install Vercel CLI**: `bun add -g vercel`
+2. **Link project**: `vercel link` (follow prompts to connect to Vercel project)
+3. **Pull environment variables**: `vercel env pull` (creates/updates `.env.local`)
+
+**Notes**:
+- `vercel dev` automatically downloads environment variables into memory
+- Restart development server after pulling new environment variables
+- Use `NEXT_PUBLIC_` prefix for client-side accessible variables
+
+## UI/UX Implementation Notes
+
+### Focus Ring Management
+The application implements professional-grade focus ring removal (similar to Stripe.com) via global CSS in `styles/global.css`. All focus rings are disabled for both mouse and keyboard interactions to match modern web application standards.
+
+### Dropdown/Menu Components
+When implementing hover dropdowns:
+- Use controlled state with Radix UI components for consistency
+- Device detection via `(hover: hover)` media query to enable hover only on capable devices
+- Avoid conflicting custom animations with Radix UI's built-in animations
+- Include timeout delays (300ms) for smooth mouse interactions
+- Separate hover-triggered vs click-triggered state management
+
+### Component State Patterns
+- Use `useRef` for timeout management and cleanup
+- Implement proper device capability detection for touch vs hover devices
+- Separate event handling logic for different interaction types (mouse, keyboard, touch)
+
+## Security Architecture
+
+### Comprehensive Security Headers
+- **CSP**: Strict Content Security Policy in middleware with Supabase allowlisting
+- **Security Headers**: X-Frame-Options, X-Content-Type-Options, Referrer-Policy
+- **Cookie Security**: Enhanced httpOnly, secure, sameSite cookie handling in middleware
+- **Image Security**: SVG sanitization with CSP sandbox in next.config.js
+
+### Authentication Security
+- **Session Management**: Automatic token refresh via middleware
+- **Route Protection**: Middleware-based session validation for protected routes
+- **Secure Cookies**: Production-optimized cookie settings with proper SameSite handling
