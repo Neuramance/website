@@ -44,4 +44,29 @@
     @apply bg-background text-foreground;
     overflow-x: hidden;
   }
+
+  /* Complete focus ring removal - like professional sites (Stripe, etc.) */
+  /* Remove all focus rings and outlines globally */
+  *:focus,
+  *:focus-visible,
+  button:focus,
+  button:focus-visible,
+  [role="button"]:focus,
+  [role="button"]:focus-visible,
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    --tw-ring-shadow: 0 0 0 0 transparent !important;
+    --tw-ring-offset-shadow: 0 0 0 0 transparent !important;
+  }
+  
+  /* Override all Tailwind focus utilities */
+  [class*="focus"]:focus,
+  [class*="focus-visible"]:focus-visible {
+    --tw-ring-shadow: 0 0 0 0 transparent !important;
+    --tw-ring-offset-shadow: 0 0 0 0 transparent !important;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow, 0 0 #0000) !important;
+  }
 }

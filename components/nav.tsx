@@ -5,7 +5,7 @@ import MobileNavMenu from './mobile-nav-menu';
 import GlitchWordmark from './ui/glitch-wordmark';
 import { Button } from './ui/button';
 import { LogIn, Send, Circle } from 'lucide-react';
-import { DashboardIcon, TokensIcon, ReaderIcon } from '@radix-ui/react-icons';
+import { DashboardIcon, TokensIcon, ReaderIcon, TransformIcon } from '@radix-ui/react-icons';
 
 
 
@@ -29,7 +29,7 @@ export default function HomepageNav() {
           <MobileNavMenu />
         </div>
 
-        <div className="absolute left-1/2 -translate-x-1/2 transform hidden md:flex gap-1">
+        <div className="absolute left-1/2 -translate-x-1/2 transform hidden lg:flex gap-1">
           <Link href="/deepstrategy">
             <Button size="nav" variant="secondary" className="gap-1 font-mono">
               <DashboardIcon className="h-[8px] w-[10px]" />
@@ -42,10 +42,16 @@ export default function HomepageNav() {
               HyperCognition<sup className="ml-[-3px] text-[8px] leading-none relative top-[-2px]">2</sup>
             </Button>
           </Link>
+          <Link href="/cyberlingua">
+            <Button size="nav" variant="secondary" className="gap-1 font-mono">
+              <TransformIcon className="h-[8px] w-[10px]" />
+              CyberLingua<sup className="ml-[-3px] text-[8px] leading-none relative top-[-2px]">3</sup>
+            </Button>
+          </Link>
           <Link href="/openpaideia">
             <Button size="nav" variant="secondary" className="gap-1 font-mono">
               <ReaderIcon className="h-[8px] w-[10px]" />
-              OpenPaideia<sup className="ml-[-3px] text-[8px] leading-none relative top-[-2px]">3</sup>
+              OpenPaideia<sup className="ml-[-3px] text-[8px] leading-none relative top-[-2px]">4</sup>
             </Button>
           </Link>
         </div>
