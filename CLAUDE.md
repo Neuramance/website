@@ -14,6 +14,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `bun run lint` - Run ESLint
 - `bun run prettier` - Format code with Prettier
 - `bun run prettier:check` - Check code formatting
+- `bun run seed` - Run database seeding script
 
 ## Architecture Overview
 
@@ -21,7 +22,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a Next.js 14 application using the App Router with route groups:
 
 - `app/(auth)/` - Authentication pages (login, signup) with shared auth layout
-- `app/(main)/` - Main application pages (home, account, contact, etc.) with main layout  
+- `app/(main)/` - Main application pages with main layout
+  - Homepage, account, chat, contact pages
+  - Product pages: deepstrategy, hypercognition, openpaideia, cyberlingua
+  - Waitlist signup functionality
 - `app/auth/` - API routes for authentication callbacks
 - `app/layout.tsx` - Root layout with global providers
 
@@ -82,9 +86,10 @@ Central audio management system with sophisticated browser compatibility:
 - **React PowerGlitch**: Visual effects for enhanced UI
 
 ### Development Tools
-- **React Hook Form**: Form handling with Zod validation
+- **React Hook Form**: 7.58.1 with @hookform/resolvers for form handling
+- **Zod**: 3.25.67 for schema validation
 - **Class Variance Authority**: Component variant management
-- **Geist Font**: Typography system
+- **Framer Motion**: Animation library for UI interactions
 
 ## Key File Patterns
 
@@ -182,3 +187,10 @@ When implementing hover dropdowns:
 - **Session Management**: Automatic token refresh via middleware
 - **Route Protection**: Middleware-based session validation for protected routes
 - **Secure Cookies**: Production-optimized cookie settings with proper SameSite handling
+
+## Testing Commands
+
+Currently, the project does not have a dedicated test framework configured. When implementing tests:
+- Check for test framework setup before running tests
+- Consider adding Jest or Vitest for unit testing
+- Use Playwright or Cypress for E2E testing if needed

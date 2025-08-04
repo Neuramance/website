@@ -10,89 +10,36 @@ import { Button } from './ui/button';
 import { MoreHorizontal } from 'lucide-react';
 import { DashboardIcon, TokensIcon, ReaderIcon, TransformIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 
 export default function MobileNavMenu() {
   const [isOpen, setIsOpen] = useState(false);
-  const [supportsHover, setSupportsHover] = useState(false);
-  const [isHoverTriggered, setIsHoverTriggered] = useState(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    // Detect if device supports hover
-    const mediaQuery = window.matchMedia('(hover: hover)');
-    setSupportsHover(mediaQuery.matches);
-  }, []);
-
-  useEffect(() => {
-    // Cleanup timeout on unmount
-    return () => {
-      if (closeTimeoutRef.current) {
-        clearTimeout(closeTimeoutRef.current);
-      }
-    };
-  }, []);
-
-  const handleOpenChange = (open: boolean) => {
-    // Allow click interactions on non-hover devices or when not hover-triggered
-    if (!supportsHover || !isHoverTriggered) {
-      setIsOpen(open);
-    }
-  };
 
   const handleMouseEnter = () => {
-    if (supportsHover) {
-      // Clear any pending close timeout
-      if (closeTimeoutRef.current) {
-        clearTimeout(closeTimeoutRef.current);
-        closeTimeoutRef.current = null;
-      }
-      
-      setIsHoverTriggered(true);
-      setIsOpen(true);
+    // Clear any pending close timeout
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
     }
+    // Open dropdown on hover (for devices that support hover)
+    setIsOpen(true);
   };
 
   const handleMouseLeave = () => {
-    if (supportsHover && isHoverTriggered) {
-      // Add delay before closing to prevent flickering
-      closeTimeoutRef.current = setTimeout(() => {
-        setIsHoverTriggered(false);
-        setIsOpen(false);
-      }, 300);
-    }
-  };
-
-  const handleContentMouseEnter = () => {
-    if (supportsHover) {
-      // Clear close timeout when entering content area
-      if (closeTimeoutRef.current) {
-        clearTimeout(closeTimeoutRef.current);
-        closeTimeoutRef.current = null;
-      }
-    }
-  };
-
-  const handleContentMouseLeave = () => {
-    if (supportsHover && isHoverTriggered) {
-      // Close when leaving content area
-      closeTimeoutRef.current = setTimeout(() => {
-        setIsHoverTriggered(false);
-        setIsOpen(false);
-      }, 300);
-    }
+    // Add delay before closing to allow moving to dropdown content
+    closeTimeoutRef.current = setTimeout(() => {
+      setIsOpen(false);
+    }, 300);
   };
 
   return (
-    <DropdownMenu open={isOpen} onOpenChange={handleOpenChange}>
+    <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenuTrigger asChild>
         <Button 
-          ref={buttonRef}
           size="nav" 
           variant="secondary" 
-          className="gap-1 font-mono lg:hidden cursor-pointer"
+          className="gap-1 font-mono lg:hidden"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
@@ -101,12 +48,11 @@ export default function MobileNavMenu() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent 
-        ref={contentRef}
         className="min-w-40"
         align="end"
         sideOffset={8}
-        onMouseEnter={handleContentMouseEnter}
-        onMouseLeave={handleContentMouseLeave}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         <Link href="/deepstrategy">
           <DropdownMenuItem className="font-mono justify-start">
