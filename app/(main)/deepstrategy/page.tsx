@@ -40,7 +40,7 @@ export default function Page() {
         </div>
       </div>
       <h1
-        className="ss-disambiguation absolute bottom-2 left-1/2 -translate-x-1/2 transform px-4 text-center font-mono text-[10px] tracking-tight text-white hover:cursor-pointer sm:text-[10px] sm:leading-tight md:text-[11px] xl:text-[10px]/none xl:leading-tight"
+        className="ss-disambiguation absolute bottom-2 left-1/2 -translate-x-1/2 transform w-[80%] max-w-5xl px-4 text-center font-mono text-[10px] tracking-tight text-white hover:cursor-pointer"
         onClick={handleStrategyClick}
         role="button"
         tabIndex={0}
