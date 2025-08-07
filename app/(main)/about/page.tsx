@@ -2,6 +2,7 @@
 
 import { useGlobalAudio } from '@/lib/contexts/AudioContext';
 import { logWarning } from '@/lib/utils/logger';
+import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 import { Terminal } from 'lucide-react';
 
 export default function Page() {
@@ -20,6 +21,14 @@ export default function Page() {
       playOverlayTrack('/audio/info-sound.mp3', 'info-sound', 'Info Sound');
     } catch (error) {
       logWarning('Info sound audio file not found. Please add info-sound.mp3 to /public/audio/', 'AboutPage');
+    }
+  };
+
+  const handleEmailClick = () => {
+    try {
+      playOverlayTrack('/audio/got-mail.mp3', 'got-mail', 'Got Mail Sound');
+    } catch (error) {
+      logWarning('Got mail audio file not found. Please add got-mail.mp3 to /public/audio/', 'AboutPage');
     }
   };
   return (
@@ -58,6 +67,28 @@ export default function Page() {
                     <br></br>- Austin, Neuramance® founder
                   </span>
                 </div>
+              </div>
+            </div>
+            {/* Contact Section */}
+            <div className="mt-24">
+              <h2 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
+                Contact :
+              </h2>
+              <p className="mt-2 ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
+                Reach out about questions, partnerships, or anything else.
+              </p>
+              <div
+                className="mt-4 flex items-center space-x-2 hover:cursor-pointer"
+                onClick={handleEmailClick}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && handleEmailClick()}
+                aria-label="Play got mail sound"
+              >
+                <EnvelopeClosedIcon className="h-3 w-3" />
+                <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
+                  austin@neuramance.com
+                </span>
               </div>
             </div>
           </div>

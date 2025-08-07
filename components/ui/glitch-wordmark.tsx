@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useGlitch } from 'react-powerglitch';
 
 /**
@@ -15,8 +15,10 @@ const GlitchWordmark = React.memo(() => {
   const companyNames = useMemo(
     () => [
       { text: 'NEURAMANCE® CYBERSYSTEMS CORPORATION', cycles: 3 },
-      { text: '神念赛博系统公司', cycles: 2 },
-      { text: '神念サイバーシステム株式会社', cycles: 2 },
+      { text: '神念赛博系统公司', cycles: 1 },
+      { text: '神念サイバーシステム株式会社', cycles: 1 },
+      { text: 'न्यूरामैन्स साइबरसिस्टम्स कॉर्पोरेशन', cycles: 1 },
+      { text: 'مؤسسة نيورامانس للأنظمة السيبرانية', cycles: 1 },
     ],
     [],
   );

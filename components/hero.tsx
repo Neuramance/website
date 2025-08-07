@@ -83,7 +83,7 @@ export const Hero = React.memo(() => {
                       aria-label="Sign up for Neuramance waitlist and beta access"
                     >
                       <Plus className="h-3 w-3" aria-hidden="true" />
-                      Create an account
+                      Create your account
                     </Button>
                   </Link>
                 )}
