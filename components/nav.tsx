@@ -4,7 +4,7 @@ import HomeNavMenu from './home-nav-menu';
 import MobileNavMenu from './mobile-nav-menu';
 import GlitchWordmark from './ui/glitch-wordmark';
 import { Button } from './ui/button';
-import { LogIn, Send, Circle } from 'lucide-react';
+import { LogIn, Send, Circle, Terminal } from 'lucide-react';
 import { DashboardIcon, TokensIcon, ReaderIcon, TransformIcon } from '@radix-ui/react-icons';
 
 
@@ -24,6 +24,12 @@ export default function HomepageNav() {
             <Button size="nav" variant="secondary" className="gap-1 font-mono">
               <Send className="h-[8px] w-[10px]" />
               Contact
+            </Button>
+          </Link>
+          <Link href="/about">
+            <Button size="nav" variant="secondary" className="gap-1 font-mono">
+              <Terminal className="h-[8px] w-[10px]" />
+              About
             </Button>
           </Link>
           <MobileNavMenu />

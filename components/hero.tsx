@@ -53,13 +53,12 @@ export const Hero = React.memo(() => {
               </div>
             </div>
             <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-              Product 01 : Neuramance DeepStrategy™
-              <br></br>Superintelligent Optimization & Improvement of Processes, Operations, Strategic Plans, System Designs, & Growth Campaigns.
+              Cutting Edge AI-Powered Tools, Services, & Capabilities for Businesses & Consumers.
             </h1>
             <div className="flex flex-col items-start">
               <div className="flex flex-col items-center">
-                <Icons.faceLevel style={{ width: 150, height: 'auto' }} />
-                <div style={{ height: 3 }} />
+                <Icons.faceLevel style={{ width: 120, height: 'auto' }} />
+                <div style={{ height: 2 }} />
                 {user ? (
                   <Button
                     size="nav"
@@ -84,7 +83,7 @@ export const Hero = React.memo(() => {
                       aria-label="Sign up for Neuramance waitlist and beta access"
                     >
                       <Plus className="h-3 w-3" aria-hidden="true" />
-                      Sign up for Waitlist / Beta
+                      Create an account
                     </Button>
                   </Link>
                 )}
@@ -102,8 +101,7 @@ export const Hero = React.memo(() => {
         onKeyDown={(e) => e.key === 'Enter' && handleQuoteClick()}
         aria-label="Play Dune 1 audio quote"
       >
-        Truth is a pathless land, it&apos;s murmur a guiding star from the
-        Outside, intuitable only in brief moments of rapture.
+        Truth is a pathless land.
       </h1>
     </section>
   );
