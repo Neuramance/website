@@ -37,11 +37,11 @@ export default function Page() {
         <div className="flex flex-col justify-start space-y-8 text-left">
           <div className="space-y-6">
             <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono tracking-tight text-transparent">
-              <span className="text-sm sm:text-sm sm:leading-tight xl:text-sm/none xl:leading-tight">About Neuramance® :</span>
-              <br></br><br></br><span className="text-xs sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">Technology is moving extremely fast.
+              <span className="text-sm leading-tight">About Neuramance® :</span>
+              <br></br><br></br><span className="text-xs leading-3">Technology is moving extremely fast.
               <br></br>Many things are on the precipice of being greatly disrupted.
               <br></br>We help you stay competitive by giving you tools to stay at the leading edge.</span>
-              <br></br><br></br><span className="text-xs sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">Our team utilizes our state-of-the-art skills & taste to build software for enhanced cognition, happiness, & business outcomes.
+              <br></br><br></br><span className="text-xs leading-3">Our team utilizes our state-of-the-art skills & taste to build software for enhanced cognition, happiness, & business outcomes.
               <br></br><br></br>The future will be exciting for all, but difficult to navigate.
               <br></br>We want to thrive in this new environment, and we want to help you do so as well, if you so choose.
               <br></br><br></br>Will you lean in, or will you fall behind?</span>
@@ -71,10 +71,10 @@ export default function Page() {
             </div>
             {/* Contact Section */}
             <div className="mt-24">
-              <h2 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
+              <h2 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent leading-3">
                 Contact :
               </h2>
-              <p className="mt-2 ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
+              <p className="mt-2 ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent leading-3">
                 Reach out about questions, partnerships, or anything else.
               </p>
               <div
