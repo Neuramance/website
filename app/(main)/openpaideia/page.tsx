@@ -21,22 +21,9 @@ export default function Page() {
           <div className="space-y-6">
             <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono tracking-tight text-transparent">
               <span className="text-sm leading-tight">Neuramance® OpenPaideia :</span>
-              <br></br><br></br><span className="text-xs leading-3">Open-Source Supplementary Education & Community for Valuable Lifelong Learning & Development.</span>
+              <br></br><span className="text-xs leading-3">Open-Source Supplementary Education & Community for Valuable Lifelong Learning & Development.<br></br><br></br>Currently in research & development.</span>
             </h1>
-            <div
-              className="-mt-[75px] flex h-[200px] w-[600px] items-start justify-start hover:cursor-pointer"
-              onClick={handleOpenPaideiaClick}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === 'Enter' && handleOpenPaideiaClick()}
-              aria-label="Play openpaideia sound"
-            >
-              <div className="mt-[75px] flex items-center space-x-2">
-                <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-                  Currently in research & development.
-                </span>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>

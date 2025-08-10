@@ -32,29 +32,29 @@ export default function Page() {
     }
   };
   return (
-    <section className="relative flex h-screen w-full items-center bg-background py-12 md:py-24 lg:py-32 xl:py-48">
+    <section className="relative flex min-h-screen w-full items-center bg-background pt-20 pb-12 md:pt-0 md:py-24 lg:py-32 xl:py-48">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col justify-start space-y-8 text-left">
           <div className="space-y-6">
-            <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono tracking-tight text-transparent">
+            <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono tracking-tight text-transparent break-words">
               <span className="text-sm leading-tight">About Neuramance® :</span>
-              <br></br><br></br><span className="text-xs leading-3">Technology is moving extremely fast.
+              <br></br><br></br><span className="text-xs leading-relaxed md:leading-normal block">Technology is moving extremely fast.
               <br></br>Many things are on the precipice of being greatly disrupted.
               <br></br>We help you stay competitive by giving you tools to stay at the leading edge.</span>
-              <br></br><br></br><span className="text-xs leading-3">Our team utilizes our state-of-the-art skills & taste to build software for enhanced cognition, happiness, & business outcomes.
+              <br></br><span className="text-xs leading-relaxed md:leading-normal block">Our team utilizes our state-of-the-art skills & taste to build software for enhanced cognition, happiness, & business outcomes.
               <br></br><br></br>The future will be exciting for all, but difficult to navigate.
               <br></br>We want to thrive in this new environment, and we want to help you do so as well, if you so choose.
               <br></br><br></br>Will you lean in, or will you fall behind?</span>
             </h1>
             <div
-              className="-mt-[75px] flex h-[200px] w-[600px] items-start justify-start hover:cursor-pointer"
+              className="md:-mt-[75px] flex h-auto md:h-[200px] w-full max-w-full md:w-[600px] items-start justify-start hover:cursor-pointer"
               onClick={handleInfoClick}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => e.key === 'Enter' && handleInfoClick()}
               aria-label="Play info sound"
             >
-              <div className="mt-[120px] flex flex-col items-start">
+              <div className="mt-8 md:mt-[120px] flex flex-col items-start">
                 <div className="flex items-center space-x-2">
                   <Terminal className="h-3 w-3" />
                   <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
@@ -79,10 +79,10 @@ export default function Page() {
                   href="https://github.com/Neuramance"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+                  className="flex items-center space-x-2 hover:opacity-80 transition-opacity min-h-[44px] md:min-h-0"
                   aria-label="Visit Neuramance GitHub"
                 >
-                  <Github className="h-3 w-3" />
+                  <Github className="h-3 w-3 flex-shrink-0" />
                   <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
                     Github
                   </span>
@@ -91,10 +91,10 @@ export default function Page() {
                   href="https://x.com/Neuramance"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+                  className="flex items-center space-x-2 hover:opacity-80 transition-opacity min-h-[44px] md:min-h-0"
                   aria-label="Visit Neuramance X/Twitter"
                 >
-                  <Twitter className="h-3 w-3" />
+                  <Twitter className="h-3 w-3 flex-shrink-0" />
                   <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
                     X/Twitter
                   </span>
@@ -102,20 +102,20 @@ export default function Page() {
               </div>
             </div>
             {/* Contact Section */}
-            <div className="mt-24">
-              <p className="mt-2 ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent leading-3">
+            <div className="mt-12 md:mt-24">
+              <p className="mt-2 ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent leading-3 break-words">
                 Reach out about questions, partnerships, or anything else.
               </p>
               <div
-                className="mt-4 flex items-center space-x-2 hover:cursor-pointer hover:opacity-80 transition-opacity"
+                className="mt-4 flex items-center space-x-2 hover:cursor-pointer hover:opacity-80 transition-opacity min-h-[44px] md:min-h-0"
                 onClick={handleEmailClick}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => e.key === 'Enter' && handleEmailClick()}
                 aria-label="Play got mail sound"
               >
-                <EnvelopeClosedIcon className="h-3 w-3" />
-                <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
+                <EnvelopeClosedIcon className="h-3 w-3 flex-shrink-0" />
+                <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight break-all">
                   austin@neuramance.com
                 </span>
               </div>

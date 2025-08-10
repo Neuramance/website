@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import AccountBlock from './account-block';
 import HomeNavMenu from './home-nav-menu';
 import MobileNavMenu from './mobile-nav-menu';
@@ -16,8 +17,8 @@ export default function HomepageNav() {
         <div className="flex items-center gap-1">
           <Link href="/">
             <Button size="nav" variant="secondary" className="gap-1 font-mono">
-              <Circle className="h-[8px] w-[10px]" />
-              Home
+              <Image src="/hand.svg" alt="Hand icon" width={10} height={8} className="h-[8px] w-[10px]" />
+              Neuramance
             </Button>
           </Link>
           <Link href="/about">

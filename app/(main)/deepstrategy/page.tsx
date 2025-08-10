@@ -21,22 +21,9 @@ export default function Page() {
           <div className="space-y-6">
             <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono tracking-tight text-transparent">
               <span className="text-sm leading-tight">Neuramance® DeepStrategy :</span>
-              <br></br><br></br><span className="text-xs leading-3">Superintelligent Optimization & Improvement of Processes, Operations, Strategic Plans, System Designs, & Growth Campaigns.</span>
+              <br></br><span className="text-xs leading-3">Superintelligent Optimization & Improvement of Processes, Operations, Strategic Plans, System Designs, & Growth Campaigns.<br></br><br></br>Currently in research & development.</span>
             </h1>
-            <div
-              className="-mt-[75px] flex h-[200px] w-[600px] items-start justify-start hover:cursor-pointer"
-              onClick={handleStrategyClick}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === 'Enter' && handleStrategyClick()}
-              aria-label="Play strategy sound"
-            >
-              <div className="mt-[75px] flex items-center space-x-2">
-                <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-                  Currently in research & development.
-                </span>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
