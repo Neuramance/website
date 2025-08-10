@@ -71,9 +71,6 @@ export default function Page() {
             </div>
             {/* Contact Section */}
             <div className="mt-24">
-              <h2 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent leading-3">
-                Contact :
-              </h2>
               <p className="mt-2 ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent leading-3">
                 Reach out about questions, partnerships, or anything else.
               </p>
