@@ -19,8 +19,9 @@ export default function Page() {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col justify-start space-y-8 text-left">
           <div className="space-y-6">
-            <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-              Neuramance CyberLingua™ : <br></br>Realtime Cross-Language Communication & Translation for True Global Communication.
+            <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono tracking-tight text-transparent">
+              <span className="text-sm leading-tight">Neuramance® CyberLingua :</span>
+              <br></br><br></br><span className="text-xs leading-3">Realtime Cross-Language Communication & Translation for True Global Communication.</span>
             </h1>
             <div
               className="-mt-[75px] flex h-[200px] w-[600px] items-start justify-start hover:cursor-pointer"
