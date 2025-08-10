@@ -3,7 +3,7 @@
 import { useGlobalAudio } from '@/lib/contexts/AudioContext';
 import { logWarning } from '@/lib/utils/logger';
 import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
-import { Terminal } from 'lucide-react';
+import { Github, Terminal, Twitter } from 'lucide-react';
 
 export default function Page() {
   const { playOverlayTrack } = useGlobalAudio();
@@ -69,13 +69,45 @@ export default function Page() {
                 </div>
               </div>
             </div>
+            {/* Social Links Section */}
+            <div className="mt-8">
+              <p className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent leading-3">
+                Follow us / visit our:
+              </p>
+              <div className="mt-4 space-y-2">
+                <a
+                  href="https://github.com/Neuramance"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+                  aria-label="Visit Neuramance GitHub"
+                >
+                  <Github className="h-3 w-3" />
+                  <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
+                    Github
+                  </span>
+                </a>
+                <a
+                  href="https://x.com/Neuramance"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+                  aria-label="Visit Neuramance X/Twitter"
+                >
+                  <Twitter className="h-3 w-3" />
+                  <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
+                    X/Twitter
+                  </span>
+                </a>
+              </div>
+            </div>
             {/* Contact Section */}
             <div className="mt-24">
               <p className="mt-2 ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent leading-3">
                 Reach out about questions, partnerships, or anything else.
               </p>
               <div
-                className="mt-4 flex items-center space-x-2 hover:cursor-pointer"
+                className="mt-4 flex items-center space-x-2 hover:cursor-pointer hover:opacity-80 transition-opacity"
                 onClick={handleEmailClick}
                 role="button"
                 tabIndex={0}
