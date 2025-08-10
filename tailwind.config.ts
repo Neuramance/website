@@ -33,7 +33,7 @@ const config = {
       },
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
-        mono: ['var(--font-geist-mono)', ...fontFamily.mono],
+        mono: ['var(--font-mono)', ...fontFamily.mono],
       },
       colors: {
         input: 'hsl(var(--input))',

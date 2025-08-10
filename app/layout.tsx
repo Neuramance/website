@@ -3,7 +3,6 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { AudioProvider } from '@/lib/contexts/AudioContext';
 import { cn } from '@/lib/utils';
 import '@/styles/global.css';
-import { GeistMono } from 'geist/font/mono';
 import { Metadata } from 'next';
 import localFont from 'next/font/local';
 
@@ -63,8 +62,12 @@ const fontSans = localFont({
   preload: true,
 });
 
-// Keep Inter for general sans-serif text
-// Use Geist Mono for monospace text (as it was before)
+const fontMono = localFont({
+  src: '../lib/fonts/BerkeleyMono-Regular.otf',
+  display: 'swap',
+  variable: '--font-mono',
+  preload: true,
+});
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -102,6 +105,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           type="font/woff2"
           crossOrigin="anonymous"
         />
+        <link
+          rel="preload"
+          href="/lib/fonts/BerkeleyMono-Regular.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -111,7 +121,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         className={cn(
           'min-h-screen font-sans antialiased',
           fontSans.variable,
-          GeistMono.variable,
+          fontMono.variable,
         )}
       >
         <ErrorBoundary>

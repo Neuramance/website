@@ -53,7 +53,7 @@ Central audio management system with sophisticated browser compatibility:
 - **Type Safety**: Comprehensive interfaces in `lib/types/components.ts`
 
 ### Styling & Typography
-- **Fonts**: Inter Variable (sans-serif) + Geist Mono (monospace)
+- **Fonts**: Inter Variable (sans-serif) + Berkeley Mono Regular (monospace)
 - **Tailwind**: Custom design system with CSS variables
 - **Font Features**: OpenType features via tailwindcss-opentype plugin
 
