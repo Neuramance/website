@@ -49,12 +49,6 @@ export default function HomepageNav() {
               CyberLingua<sup className="ml-[-3px] text-[8px] leading-none relative top-[-2px]">3</sup>
             </Button>
           </Link>
-          <Link href="/openpaideia">
-            <Button size="nav" variant="secondary" className="gap-1 font-mono">
-              <ReaderIcon className="h-[8px] w-[10px]" />
-              OpenPaideia<sup className="ml-[-3px] text-[8px] leading-none relative top-[-2px]">4</sup>
-            </Button>
-          </Link>
         </div>
 
         <AccountBlock />

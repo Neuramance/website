@@ -62,12 +62,6 @@ export default function MobileNavMenu() {
             <span>CyberLingua<sup className="ml-[1px] text-[8px] leading-none align-[0.1em]">3</sup></span>
           </DropdownMenuItem>
         </Link>
-        <Link href="/openpaideia">
-          <DropdownMenuItem className="font-mono justify-start">
-            <ReaderIcon className="h-3 w-3 mr-2" />
-            <span>OpenPaideia<sup className="ml-[1px] text-[8px] leading-none align-[0.1em]">4</sup></span>
-          </DropdownMenuItem>
-        </Link>
       </DropdownMenuContent>
     </DropdownMenu>
     </div>

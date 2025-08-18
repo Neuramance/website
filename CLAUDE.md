@@ -24,7 +24,7 @@ This is a Next.js 14 application using the App Router with route groups:
 - `app/(auth)/` - Authentication pages (login, signup) with shared auth layout
 - `app/(main)/` - Main application pages with main layout
   - Homepage, account, chat, contact pages
-  - Product pages: deepstrategy, hypercognition, openpaideia, lingua
+  - Product pages: deepstrategy, hypercognition, cyberlingua
   - Waitlist signup functionality
 - `app/auth/` - API routes for authentication callbacks
 - `app/layout.tsx` - Root layout with global providers
