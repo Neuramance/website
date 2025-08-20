@@ -12,19 +12,19 @@ import { DashboardIcon, TokensIcon, ReaderIcon, TransformIcon } from '@radix-ui/
 
 export default function HomepageNav() {
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 flex w-full justify-center border-b bg-secondary px-2 py-1">
-      <div className="flex w-full items-center justify-between">
-        <div className="flex items-center gap-1">
-          <Link href="/">
-            <Button size="nav" variant="secondary" className="gap-1 font-mono">
+    <header className="fixed left-0 right-0 top-0 z-50 flex w-full justify-center border-b bg-secondary px-1 sm:px-2 py-1">
+      <div className="flex w-full items-center justify-between gap-1">
+        <div className="flex items-center gap-0.5 sm:gap-1 min-w-0">
+          <Link href="/" className="shrink-0">
+            <Button size="nav" variant="secondary" className="gap-1 font-mono px-1.5 sm:px-2 sm:pr-2.5">
               <Image src="/hand.svg" alt="Hand icon" width={10} height={8} className="h-[8px] w-[10px]" />
-              Neuramance
+              <span className="hidden min-[360px]:inline">Neuramance</span>
             </Button>
           </Link>
-          <Link href="/about">
+          <Link href="/about" className="hidden min-[480px]:block shrink-0">
             <Button size="nav" variant="secondary" className="gap-1 font-mono">
               <Terminal className="h-[8px] w-[10px]" />
-              About/Contact
+              <span className="hidden sm:inline">About/Contact</span>
             </Button>
           </Link>
           <MobileNavMenu />
@@ -51,7 +51,9 @@ export default function HomepageNav() {
           </Link>
         </div>
 
-        <AccountBlock />
+        <div className="shrink-0">
+          <AccountBlock />
+        </div>
       </div>
     </header>
   );

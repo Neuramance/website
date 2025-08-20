@@ -18,7 +18,7 @@ export default function MobileNavMenu() {
   return (
     <div 
       onMouseLeave={() => setOpen(false)}
-      className="[@media(hover:hover)]:block"
+      className="[@media(hover:hover)]:block lg:hidden"
     >
       <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
         <DropdownMenuTrigger asChild>
@@ -26,11 +26,11 @@ export default function MobileNavMenu() {
             <Button 
               size="nav" 
               variant="secondary" 
-              className="gap-1 font-mono lg:hidden"
+              className="gap-1 font-mono px-1.5 sm:px-2 sm:pr-2.5"
               onMouseEnter={() => setOpen(true)}
             >
-              <MoreHorizontal className="h-[8px] w-[10px]" />
-              Products
+              <MoreHorizontal className="h-[8px] w-[10px] shrink-0" />
+              <span className="hidden min-[400px]:inline">Products</span>
             </Button>
             {/* Invisible hover bridge */}
             <div 
