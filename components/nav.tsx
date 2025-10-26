@@ -6,7 +6,7 @@ import MobileNavMenu from './mobile-nav-menu';
 import GlitchWordmark from './ui/glitch-wordmark';
 import { Button } from './ui/button';
 import { LogIn, Circle, Terminal } from 'lucide-react';
-import { DashboardIcon, TokensIcon, ReaderIcon, TransformIcon } from '@radix-ui/react-icons';
+import { DashboardIcon, ReaderIcon } from '@radix-ui/react-icons';
 
 
 
@@ -21,12 +21,6 @@ export default function HomepageNav() {
               <span className="hidden min-[360px]:inline">Neuramance</span>
             </Button>
           </Link>
-          <Link href="/about" className="hidden min-[480px]:block shrink-0">
-            <Button size="nav" variant="secondary" className="gap-1 font-mono">
-              <Terminal className="h-[8px] w-[10px]" />
-              <span className="hidden sm:inline">About/Contact</span>
-            </Button>
-          </Link>
           <MobileNavMenu />
         </div>
 
@@ -37,22 +31,15 @@ export default function HomepageNav() {
               DeepStrategy<sup className="ml-[-3px] text-[8px] leading-none relative top-[-2px]">1</sup>
             </Button>
           </Link>
-          <Link href="/hypercognition">
-            <Button size="nav" variant="secondary" className="gap-1 font-mono">
-              <TokensIcon className="h-[8px] w-[10px]" />
-              HyperCognition<sup className="ml-[-3px] text-[8px] leading-none relative top-[-2px]">2</sup>
-            </Button>
-          </Link>
-          <Link href="/cyberlingua">
-            <Button size="nav" variant="secondary" className="gap-1 font-mono">
-              <TransformIcon className="h-[8px] w-[10px]" />
-              CyberLingua<sup className="ml-[-3px] text-[8px] leading-none relative top-[-2px]">3</sup>
-            </Button>
-          </Link>
         </div>
 
         <div className="shrink-0">
-          <AccountBlock />
+          <Link href="/about">
+            <Button size="nav" variant="secondary" className="gap-1 font-mono">
+              <Terminal className="h-[8px] w-[10px]" />
+              <span className="hidden sm:inline">About/Contact</span>
+            </Button>
+          </Link>
         </div>
       </div>
     </header>
