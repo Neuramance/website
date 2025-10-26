@@ -3,7 +3,7 @@
 import { useGlobalAudio } from '@/lib/contexts/AudioContext';
 import { logWarning } from '@/lib/utils/logger';
 import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
-import { Github, Terminal, Twitter } from 'lucide-react';
+import { Terminal, Twitter } from 'lucide-react';
 
 export default function Page() {
   const { playOverlayTrack } = useGlobalAudio();
@@ -46,27 +46,44 @@ export default function Page() {
         <div className="flex flex-col justify-start space-y-8 text-left">
           <div className="space-y-6">
             <h1 className="ss-disambiguation break-words bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono tracking-tight text-transparent">
-              <span className="text-sm leading-tight">
-                About Neuramance® :
-              </span>
+              <span className="text-sm leading-tight">Neuramance® :</span>
               <br></br>
               <br></br>
               <span className="block text-xs leading-relaxed md:leading-normal">
-                Technology is moving extremely fast.
-                <br></br>Many things are on the precipice of being greatly
-                disrupted.
-                <br></br>We help you stay competitive by giving you tools to
-                stay at the leading edge.
-              </span>
-              <br></br>
-              <span className="block text-xs leading-relaxed md:leading-normal">
-                Our team utilizes our state-of-the-art skills & taste to build
-                software for enhanced cognition, happiness, & business outcomes.
+                Many problems in the world have been solved. <br></br>The
+                baseline quality of life that humanity has achieved, through
+                hard work & pain, is now fantastic.
                 <br></br>
-                <br></br>The future will be exciting for all, but difficult to
-                navigate.
-                <br></br>We want to thrive in this new environment, and we want
-                to help you do so as well, if you so choose.
+                <br></br>Much of the vectorspace comprising the remaining
+                highest ROI (investment = effort, return = human elucidation)
+                <br></br>things that one could work on is now in the realm of
+                refining experiences that people often overlook.
+                <br></br>
+                <br></br>
+                <span className="block pl-8">
+                  {'>'} This trend is visible in many ways.<br></br>
+                  <span className="block pl-4">
+                    One example in which it is clearly demonstrated is in the
+                    relativly recent wave of successful new elegantly crafted
+                    CPG brands.
+                  </span>
+                </span>
+                <br></br>Herein lies an opportunity for designers, craftsman,
+                curators, & the like to reimagine forgotton monotonies of
+                everyday life, pernicious papercuts of the soul carelessly
+                devoid of any beauty or taste that millions of people sleepwalk
+                into experiencing constantly, & unexpectedly gift them a bit of
+                happiness, elucidation, & enrichment, no matter how small.
+                <br></br>
+                <br></br>Those who truly care about user experiences & product
+                design know what I&apos;m talking about, & can relate to the
+                compelling inclination to try & help improve things.
+                <br></br>
+                <br></br>Neuramance® is an attempt, specializing in the digital
+                world, at reinvigorating beauty & delight back into common human
+                experiences.
+                <br></br>We design our own softwre products, & also consult &
+                work with others pursuing digital excellence.
               </span>
             </h1>
             <div
@@ -81,51 +98,19 @@ export default function Page() {
                 <div className="flex items-center space-x-2">
                   <Terminal className="h-3 w-3" />
                   <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-                    Software from the future, for enabling eudaimonia.
+                    Software from the future,
                   </span>
                 </div>
                 <div className="mt-1 flex items-center space-x-2">
                   <div className="h-3 w-3" />
                   <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-                    <br></br>- Austin, Neuramance® founder
+                    Austin, Neuramance® founder
                   </span>
                 </div>
               </div>
             </div>
-            {/* Social Links Section */}
-            <div className="mt-8">
-              <p className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs leading-3 tracking-tight text-transparent">
-                Follow us / visit our:
-              </p>
-              <div className="mt-4 space-y-2">
-                <a
-                  href="https://github.com/Neuramance"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 transition-opacity hover:opacity-80"
-                  aria-label="Visit Neuramance GitHub"
-                >
-                  <Github className="h-3 w-3 flex-shrink-0" />
-                  <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-                    Github
-                  </span>
-                </a>
-                <a
-                  href="https://x.com/Neuramance"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 transition-opacity hover:opacity-80"
-                  aria-label="Visit Neuramance X/Twitter"
-                >
-                  <Twitter className="h-3 w-3 flex-shrink-0" />
-                  <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-                    X/Twitter
-                  </span>
-                </a>
-              </div>
-            </div>
             {/* Contact Section */}
-            <div className="mt-12 md:mt-24">
+            <div className="mt-4 md:mt-8">
               <p className="ss-disambiguation mt-2 break-words bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs leading-3 tracking-tight text-transparent">
                 Reach out about questions, partnerships, or anything else.
               </p>
@@ -142,6 +127,18 @@ export default function Page() {
                   austin@neuramance.com
                 </span>
               </div>
+              <a
+                href="https://x.com/Neuramance"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 flex items-center space-x-2 transition-opacity hover:opacity-80"
+                aria-label="Visit Neuramance X/Twitter"
+              >
+                <Twitter className="h-3 w-3 flex-shrink-0" />
+                <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
+                  X/Twitter
+                </span>
+              </a>
             </div>
           </div>
         </div>

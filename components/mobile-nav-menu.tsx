@@ -44,10 +44,10 @@ export default function MobileNavMenu() {
           align="start"
           sideOffset={8}
         >
-        <Link href="/deepstrategy">
+        <Link href="https://clearsure.co" target="_blank" rel="noopener noreferrer">
           <DropdownMenuItem className="font-mono justify-start">
             <DashboardIcon className="h-3 w-3 mr-2" />
-            <span>DeepStrategy<sup className="ml-[1px] text-[8px] leading-none align-[0.1em]">1</sup></span>
+            <span>Clearsure<sup className="ml-[1px] text-[8px] leading-none align-[0.1em]">1</sup></span>
           </DropdownMenuItem>
         </Link>
       </DropdownMenuContent>
