@@ -83,7 +83,7 @@ export default function Page() {
                 world, at reinvigorating beauty & delight back into common human
                 experiences.
                 <br></br>We design our own softwre products, & also consult &
-                work with others pursuing digital excellence.
+                work with others pursuing excellence.
               </span>
             </h1>
             <div

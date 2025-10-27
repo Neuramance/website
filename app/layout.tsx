@@ -17,6 +17,12 @@ export const metadata: Metadata = {
   creator: 'Neuramance',
   publisher: 'Neuramance',
   metadataBase: new URL('https://neuramance.com'),
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+  },
   alternates: {
     canonical: 'https://neuramance.com',
   },

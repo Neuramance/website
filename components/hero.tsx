@@ -55,7 +55,7 @@ export const Hero = React.memo(() => {
               </div>
             </div>
             <h1 className="ss-disambiguation bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-              Holding Co. & Design Consultancy.
+              Holding Co. & Consultancy.
             </h1>
             <div className="flex flex-col items-center">
               <div className="flex flex-col items-center">
