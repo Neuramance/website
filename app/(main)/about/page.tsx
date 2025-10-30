@@ -55,25 +55,15 @@ export default function Page() {
                 hard work & pain, is now fantastic.
                 <br></br>
                 <br></br>Much of the vectorspace comprising the remaining
-                highest ROI (investment = effort, return = human elucidation)
-                <br></br>things that one could work on is now in the realm of
+                highest ROI things that one could work on is now in the realm of
                 refining experiences that people often overlook.
                 <br></br>
-                <br></br>
-                <span className="block pl-8">
-                  {'>'} This trend is visible in many ways.<br></br>
-                  <span className="block pl-4">
-                    One example in which it is clearly demonstrated is in the
-                    relativly recent wave of successful new elegantly crafted
-                    CPG brands.
-                  </span>
-                </span>
-                <br></br>Herein lies an opportunity for designers, craftsman,
-                curators, & the like to reimagine forgotton monotonies of
-                everyday life, pernicious papercuts of the soul carelessly
-                devoid of any beauty or taste that millions of people sleepwalk
-                into experiencing constantly, & unexpectedly gift them a bit of
-                happiness, elucidation, & enrichment, no matter how small.
+                <br></br>Herein lies an opportunity for designers, builders, &
+                engineers to reimagine forgotton monotonies of everyday life,
+                pernicious papercuts of the soul carelessly devoid of any beauty
+                or taste that millions of people sleepwalk into experiencing
+                constantly, & unexpectedly gift them a bit of happiness,
+                elucidation, & enrichment, no matter how small.
                 <br></br>
                 <br></br>Those who truly care about user experiences & product
                 design know what I&apos;m talking about, & can relate to the
