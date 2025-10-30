@@ -43,3 +43,6 @@ OPTIMIZATION_SUMMARY.md
 AUDIO_OPTIMIZATION.md
 docs/optimizations/OPTIMIZATION_SUMMARY.md
 docs/optimizations/AUDIO_OPTIMIZATION.md
+
+# logs
+.logs/

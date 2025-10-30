@@ -54,9 +54,8 @@ export default function Page() {
                 baseline quality of life that humanity has achieved, through
                 hard work & pain, is now fantastic.
                 <br></br>
-                <br></br>Much of the vectorspace comprising the remaining
-                highest ROI things that one could work on is now in the realm of
-                refining experiences that people often overlook.
+                <br></br>Many of the remaining highest-ROI things one could work on are now in the
+                realm of refining experiences that people often overlook.
                 <br></br>
                 <br></br>Herein lies an opportunity for designers, builders, &
                 engineers to reimagine forgotton monotonies of everyday life,
