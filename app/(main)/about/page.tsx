@@ -64,10 +64,6 @@ export default function Page() {
                 constantly, & unexpectedly gift them a bit of happiness,
                 elucidation, & enrichment, no matter how small.
                 <br></br>
-                <br></br>Those who truly care about user experiences & product
-                design know what I&apos;m talking about, & can relate to the
-                compelling inclination to try & help improve things.
-                <br></br>
                 <br></br>Neuramance® is an attempt, specializing in the digital
                 world, at reinvigorating beauty & delight back into common human
                 experiences.
@@ -99,8 +95,9 @@ export default function Page() {
               </div>
             </div>
             {/* Contact Section */}
-            <div className="mt-4 md:mt-8">
-              <p className="ss-disambiguation mt-2 break-words bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs leading-3 tracking-tight text-transparent">
+            <div className="md:-mt-[75px]">
+              <div className="mt-5 md:mt-[70px]">
+                <p className="ss-disambiguation mt-2 break-words bg-gradient-to-r from-white to-gray-400 bg-clip-text font-mono text-xs leading-3 tracking-tight text-transparent">
                 Reach out about questions, partnerships, or anything else.
               </p>
               <div
@@ -116,7 +113,7 @@ export default function Page() {
                   austin@neuramance.com
                 </span>
               </div>
-              
+              </div>
             </div>
           </div>
         </div>
