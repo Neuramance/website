@@ -93,14 +93,14 @@ export const Hero = React.memo(() => {
       </div>
       {/* Bottom Centered h1 */}
       <h1
-        className="ss-disambiguation absolute bottom-2 left-1/2 w-[80%] max-w-5xl -translate-x-1/2 transform px-4 text-center font-mono text-[10px] tracking-tight text-white hover:cursor-pointer"
+        className="ss-disambiguation absolute bottom-2 left-1/2 w-[80%] max-w-5xl -translate-x-1/2 transform px-4 text-center font-mono text-[10px] tracking-tight bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent hover:cursor-pointer"
         onClick={handleQuoteClick}
         role="button"
         tabIndex={0}
         onKeyDown={(e) => e.key === 'Enter' && handleQuoteClick()}
         aria-label="Play audio quote"
       >
-        A company&apos;s quality is conveyed in everything it does.
+        A company&apos;s excellence is conveyed in everything it does.
       </h1>
     </section>
   );

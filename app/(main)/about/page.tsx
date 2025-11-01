@@ -116,33 +116,21 @@ export default function Page() {
                   austin@neuramance.com
                 </span>
               </div>
-              <a
-                href="https://x.com/Neuramance"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 flex items-center space-x-2 transition-opacity hover:opacity-80"
-                aria-label="Visit Neuramance X/Twitter"
-              >
-                <Twitter className="h-3 w-3 flex-shrink-0" />
-                <span className="ss-disambiguation bg-gradient-to-r from-white to-gray-100 bg-clip-text font-mono text-xs tracking-tight text-transparent sm:text-xs sm:leading-tight xl:text-xs/none xl:leading-tight">
-                  X/Twitter
-                </span>
-              </a>
+              
             </div>
           </div>
         </div>
       </div>
       {/* Bottom Centered h1 */}
       <h1
-        className="ss-disambiguation absolute bottom-2 left-1/2 w-[80%] max-w-5xl -translate-x-1/2 transform px-4 text-center font-mono text-[10px] tracking-tight text-white hover:cursor-pointer"
+        className="ss-disambiguation absolute bottom-2 left-1/2 w-[80%] max-w-5xl -translate-x-1/2 transform px-4 text-center font-mono text-[10px] tracking-tight bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent hover:cursor-pointer"
         onClick={handleQuoteClick}
         role="button"
         tabIndex={0}
         onKeyDown={(e) => e.key === 'Enter' && handleQuoteClick()}
         aria-label="Play about audio quote"
       >
-        We are what we repeatedly do. Excellence, then, is not an act, but a
-        habit.
+        A company&apos;s excellence is conveyed in everything it does.
       </h1>
     </section>
   );
